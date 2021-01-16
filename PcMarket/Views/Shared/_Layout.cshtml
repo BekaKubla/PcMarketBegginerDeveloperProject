@@ -1,0 +1,33 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+<head>
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="pcpart" asp-action="Create">განცხადების დამატება</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="pcpart" asp-action="List">ნაწილები</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: false)
+    }
+</body>
+</html>
