@@ -12,8 +12,8 @@ namespace PcMarket.Repositories
         IEnumerable<PcPartProp> GetAllParts();
         PcPartProp GetPartByID(int id);
         PcPartProp CreatePart(PcPartProp pcPartProp);
-        PcPartProp DeletePart(int id);
-        PcPartProp UpdatePart(PcPartProp pcPartProp);
+        void DeletePart(PcPartProp pcPartProp);
+        void UpdatePart(PcPartProp pcPartProp);
 
     }
 }

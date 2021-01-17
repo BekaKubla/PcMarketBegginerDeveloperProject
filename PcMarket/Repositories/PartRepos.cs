@@ -22,14 +22,9 @@ namespace PcMarket.Repositories
             return pcPartProp;
         }
 
-        public PcPartProp DeletePart(int id)
+        public void DeletePart(PcPartProp pcPartProp)
         {
-            PcPartProp pcPart = _dbContext.GetPcParts.FirstOrDefault(e => e.ID == id) ;
-            if (pcPart != null)
-            {
-                _dbContext.GetPcParts.Remove(pcPart);
-            }
-            return pcPart;
+            _dbContext.GetPcParts.Remove(pcPartProp);
         }
 
         public IEnumerable<PcPartProp> GetAllParts()
@@ -48,10 +43,9 @@ namespace PcMarket.Repositories
             return (_dbContext.SaveChanges() >= 0);
         }
 
-        public PcPartProp UpdatePart(PcPartProp pcPartProp)
+        public void UpdatePart(PcPartProp pcPartProp)
         {
-            PcPartProp pcPart = _dbContext.GetPcParts.FirstOrDefault(o => o.ID == pcPartProp.ID);
-            return pcPartProp;
+            //nothing
         }
     }
 }

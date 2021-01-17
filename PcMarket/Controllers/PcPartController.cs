@@ -43,7 +43,6 @@ namespace PcMarket.Controllers
             return View(pcPartDetailsViewModel);
 
         }
-
         [HttpGet]
         public IActionResult Create()
         {
@@ -62,9 +61,9 @@ namespace PcMarket.Controllers
                 pcPartCreateViewModel.PartDescribtion = partProp.PartDescribtion;
             }
             _pcRepo.SaveChange();
-            return RedirectToAction("index");
+            return RedirectToAction("list");
         }
-        [HttpDelete("{id}")]
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             var findCar = _pcRepo.GetPartByID(id);
@@ -72,8 +71,9 @@ namespace PcMarket.Controllers
             {
                 return NotFound();
             }
+            _pcRepo.DeletePart(findCar);
             _pcRepo.SaveChange();
-            return RedirectToAction("Index");
+            return RedirectToAction("list");
         }
         [HttpGet]
         public IActionResult Edit(int id, PcPartEditViewModel pcPartEditViewModel)
@@ -84,33 +84,26 @@ namespace PcMarket.Controllers
             pcPartEditViewModel.PartCategory = findPart.PartCategory;
             pcPartEditViewModel.PartPrice = findPart.PartPrice;
             pcPartEditViewModel.PartDescribtion = findPart.PartDescribtion;
-            _pcRepo.SaveChange();
             return View(pcPartEditViewModel);
 
         }
         [HttpPost]
-        public IActionResult Edit(PcPartEditViewModel pcPartEditViewModel)
+        public IActionResult Edit(PcPartEditViewModel pcPartEditViewModel,int id)
         {
-            PcPartProp pcPartProp = _pcRepo.GetPartByID(pcPartEditViewModel.ID);
-            pcPartProp.ID = pcPartEditViewModel.ID;
-            pcPartProp.PartName = pcPartEditViewModel.PartName;
-            pcPartProp.PartCondition = pcPartEditViewModel.PartCondition;
-            pcPartProp.PartCategory = pcPartEditViewModel.PartCategory;
-            pcPartProp.PartPrice = pcPartEditViewModel.PartPrice;
-            pcPartProp.PartDescribtion = pcPartEditViewModel.PartDescribtion;
-
-            PcPartProp newPart = new PcPartProp
+            var findPart = _pcRepo.GetPartByID(id);
+            if (findPart == null)
             {
-                ID = pcPartEditViewModel.ID,
-                PartName = pcPartEditViewModel.PartName,
-                PartCondition = pcPartEditViewModel.PartCondition,
-                PartCategory = pcPartEditViewModel.PartCategory,
-                PartPrice = pcPartEditViewModel.PartPrice,
-                PartDescribtion = pcPartEditViewModel.PartDescribtion
-            };
-            _pcRepo.UpdatePart(newPart);
-            _pcRepo.SaveChange();
-            return RedirectToAction("Details", new { id = newPart.ID });
+                return NotFound();
+            }
+            else
+            {
+                findPart.PartName = pcPartEditViewModel.PartName;
+                findPart.PartCategory = pcPartEditViewModel.PartCategory;
+                findPart.PartCondition = pcPartEditViewModel.PartCondition;
+                findPart.PartPrice = pcPartEditViewModel.PartPrice;
+                findPart.PartDescribtion = pcPartEditViewModel.PartDescribtion;
+            }
+            return RedirectToAction("details", new { id = findPart.ID });
         }
     }
 }
