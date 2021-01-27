@@ -1,7 +1,9 @@
-﻿using PcMarket.Models;
+﻿using Microsoft.AspNetCore.Http;
+using PcMarket.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,5 +27,8 @@ namespace PcMarket.ViewModels
         [Required]
         [MaxLength(450)]
         public string PartDescribtion { get; set; }
+        [NotMapped]
+        [Display(Name ="ფოტო")]
+        public IFormFile ImageFile { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using PcMarket.Models;
+﻿using Microsoft.AspNetCore.Http;
+using PcMarket.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,5 +22,6 @@ namespace PcMarket.ViewModels.PcPartViewModels
         [Display(Name = "აღწერა")]
         [MaxLength(450)]
         public string PartDescribtion { get; set; }
+        public string EditPhotoPath { get; set; }
     }
 }

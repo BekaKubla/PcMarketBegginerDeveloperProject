@@ -28,8 +28,10 @@ namespace PcMarket
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IPcPartRepos, PartRepos>();
+            services.AddTransient<IPcPartOrderRepo, PcPartOrderRepo>();
             services.AddMvc();
             services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PcPartContext")));
+            services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PcPartOrderContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

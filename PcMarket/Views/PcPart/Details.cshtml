@@ -1,34 +1,47 @@
 ﻿@model PcMarket.ViewModels.PcPartDetailsViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    ViewBag.Title = "Employee Details";
-}
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-</head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <div class="row justify-content-center m-3">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.PartName)</th>
+                <th>@Html.DisplayNameFor(model => model.PartCondition)</th>
+                <th>@Html.DisplayNameFor(model => model.PartPrice)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <img src="/images/@Model.ImageFile" class="rounded-circle" height="40" width="40" asp-append-version="true" />
+                    @Model.PartName
+                </td>
+                <td>@Model.PartCondition</td>
+                <td>@Model.PartPrice</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.PartDescribtion)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.PartDescribtion</td>
+            </tr>
+        </tbody>
+    </table>
     <div class="col-sm-8">
         <div class="card">
             <div class="card-body text-center">
-                <img class="card-img-top" src="https://globalimpactnetwork.org/wp-content/themes/globalimpact/images/no-image-found-360x250.png" width="450" height="230" />
-                <h3>დასახელება : @Model.PartName</h3>
-                <h3>მდგომარეობა :@Model.PartCondition</h3>
-                <h3>კატეგორია :@Model.PartCategory</h3>
-                <h3>ფასი : @Model.PartPrice ლარი</h3>
-                <h3>აღწერა : @Model.PartDescribtion</h3>
-
+                <img src="/images/@Model.ImageFile" class="rounded-circle" height="400" width="400" asp-append-version="true" />
             </div>
             <div class="card-footer text-center">
-                <button type="button" class="btn btn-primary" onclick="window.history.go(-1)">უკან</button>
-                <a asp-controller="pcpart" asp-action="edit" asp-route-id="@Model.Id">ჩასწორება</a>
-                <a asp-controller="pcpart" asp-action="delete" asp-route-id="@Model.Id">წაშლა</a>
+                <a asp-controller="pcpart" asp-action="Order" asp-route-id="@Model.Id">შეკვეთა</a>
             </div>
         </div>
     </div>
 </div>
-
-@section Scripts {
-    <script src="~/js/CustomScript.js"></script>
-}

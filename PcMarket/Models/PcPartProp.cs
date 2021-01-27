@@ -26,6 +26,7 @@ namespace PcMarket.Models
         [Required]
         [MaxLength(450)]
         public string PartDescribtion { get; set; }
+        public string FileName { get; set; }
 
     }
 
@@ -56,6 +57,7 @@ namespace PcMarket.Models
     }
     public enum Condition
     {
+        None,
         ახალი,
         მეორადი
     }

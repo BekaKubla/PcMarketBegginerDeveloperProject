@@ -1,0 +1,79 @@
+﻿@model PcMarket.Models.Contact
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<head>
+    <meta charset="utf-8">
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Style inputs */
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+        /* Create two columns that float next to eachother */
+        .column {
+            float: left;
+            width: 50%;
+            margin-top: 6px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="text-align:center">
+            <a href="https://www.facebook.com/3243243432sfd324/" target="_blank"><img src="~/images/facebook.png" width="50" height="50"/><h3>გამოგვყევი Facebook ზე</h3></a>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div style="text-align:center">
+                    <h2>მისამართი</h2>
+                    <h3>ქალაქი , თქვენი მისამართი N28</h3>
+                    <p><img src="~/images/telephone.png" width="20" height="20" />+995 579 025 090</p>
+                    <p><img src="~/images/gmail.png" width="20" height="20" />CompanyMail@gmail.com</p>
+                </div>
+                <img src="/images/mymap.png" style="width:100%">
+            </div>
+            <div class="column">
+                <form action="/action_page.php">
+                    <label asp-for="FirstName"></label>
+                    <input type="text" id="firstname" name="firstname" placeholder="თქვენი სახელი..">
+                    <label asp-for="LastName"></label>
+                    <input type="text" id="lastname" name="lastname" placeholder="თქვენი გვარი..">
+                    <label asp-for="Mail"></label>
+                    <input type="text" id="lastname" name="lastname" placeholder="ელ-ფოსტა..">
+                    <label asp-for="Subject"></label>
+                    <textarea id="subject" name="subject" placeholder="შეტყობინება.." style="height:170px"></textarea>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>

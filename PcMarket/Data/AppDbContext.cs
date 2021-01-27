@@ -14,5 +14,6 @@ namespace PcMarket.Data
 
         }
         public DbSet<PcPartProp> GetPcParts { get;set; }
+        public DbSet<PcPartOrder> GetOrders { get; set; }
     }
 }
