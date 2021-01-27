@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 using PcMarket.Models;
 using PcMarket.Repositories;
 using PcMarket.ViewModels;
@@ -148,7 +150,6 @@ namespace PcMarket.Controllers
             pcPartOrderDetailsView.PartName = getId.PartName;
             pcPartOrderDetailsView.PartCondition = getId.PartCondition;
             pcPartOrderDetailsView.PartPrice = getId.PartPrice;
-            pcPartOrderDetailsView.ImageFile = getId.FileName;
             return View(pcPartOrderDetailsView);
         }
         [HttpPost]
@@ -158,7 +159,7 @@ namespace PcMarket.Controllers
             pcPartOrderDetailsView.PartName = getId.PartName;
             pcPartOrderDetailsView.PartCondition = getId.PartCondition;
             pcPartOrderDetailsView.PartPrice = getId.PartPrice;
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View();
             }
@@ -195,9 +196,34 @@ namespace PcMarket.Controllers
             _PcPartOrder.SaveChange();
             return RedirectToAction("OrderList");
         }
-        public ActionResult Contact()
+        [HttpGet]
+        public IActionResult Contact()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Contact(Contact contact)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(contact.Mail, "infopcmarketgeo@gmail.com"));
+            message.To.Add(new MailboxAddress(contact.Title, "infopcmarketgeo@gmail.com"));
+            message.Subject = contact.Title;
+            message.Body = new TextPart("plain")
+            {
+                Text = contact.Subject + "\n" +"\n" +"ადრესატის სახელი და გვარი : " + contact.FirstName +" "+ contact.LastName
+            };
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.gmail.com", 587, false);
+                client.Authenticate("infopcmarketgeo@gmail.com", "87*z7>YMH~>aPuR>");
+                client.Send(message);
+                client.Disconnect(true);
+            }
+            return RedirectToAction("list");
         }
     }
 }

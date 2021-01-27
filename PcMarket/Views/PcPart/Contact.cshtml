@@ -56,21 +56,43 @@
                     <h2>მისამართი</h2>
                     <h3>ქალაქი , თქვენი მისამართი N28</h3>
                     <p><img src="~/images/telephone.png" width="20" height="20" />+995 579 025 090</p>
-                    <p><img src="~/images/gmail.png" width="20" height="20" />CompanyMail@gmail.com</p>
+                    <p><img src="~/images/gmail.png" width="20" height="20" />  Infopcmarketgeo@gmail.com</p>
                 </div>
                 <img src="/images/mymap.png" style="width:100%">
             </div>
             <div class="column">
-                <form action="/action_page.php">
-                    <label asp-for="FirstName"></label>
-                    <input type="text" id="firstname" name="firstname" placeholder="თქვენი სახელი..">
-                    <label asp-for="LastName"></label>
-                    <input type="text" id="lastname" name="lastname" placeholder="თქვენი გვარი..">
-                    <label asp-for="Mail"></label>
-                    <input type="text" id="lastname" name="lastname" placeholder="ელ-ფოსტა..">
-                    <label asp-for="Subject"></label>
-                    <textarea id="subject" name="subject" placeholder="შეტყობინება.." style="height:170px"></textarea>
-                    <input type="submit" value="Submit">
+                <form asp-controller="pcpart" asp-action="contact" method="post" class="mt-3">
+                    <div class="col-sm-10">
+                        <label asp-for="FirstName">სახელი</label>
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                        <input type="text" asp-for="FirstName" class="form-control" placeholder="თქვენი სახელი..">
+                    </div>
+                    <div class="col-sm-10">
+                        <label asp-for="LastName">გვარი</label>
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                        <input type="text" asp-for="LastName" class="form-control" placeholder="თქვენი გვარი..">
+                    </div>
+                    <div class="col-sm-10">
+                        <label asp-for="Mail">ელ-ფოსტა</label>
+                        <span asp-validation-for="Mail" class="text-danger"></span>
+                        <input type="text" asp-for="Mail" class="form-control" placeholder="ელ-ფოსტა..">
+                    </div>
+                    <div class="col-sm-10">
+                        <label asp-for="Title">სათაური</label>
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                        <input type="text" asp-for="Title" class="form-control" placeholder="სათაური..">
+                    </div>
+                    <div class="col-sm-10">
+                        <label asp-for="Subject">ტექსტი</label>
+                        <span asp-validation-for="Subject" class="text-danger"></span>
+                        <textarea asp-for="Subject" class="form-control" placeholder="შეტყობინება.." style="height:170px"></textarea>
+                    </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">შეკვეთა</button>
+                                <button type="button" class="btn btn-primary" onclick="window.history.go(-1)">უკან</button>
+                            </div>
+                        </div>
                 </form>
             </div>
         </div>

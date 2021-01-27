@@ -8,21 +8,21 @@ namespace PcMarket.ViewModels.PcPartViewModels
 {
     public class PcPartOrderDetailsView : PcPartDetailsViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="სახელი აუცილებელია")]
         [Display(Name = "სახელი")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage ="გვარი აუცილებელია")]
         [Display(Name = "გვარი")]
         public string Surname { get; set; }
-        [Required]
+        [Required(ErrorMessage ="მისამართი აუცილებელია")]
         [Display(Name = "მისამართი")]
         public string Adress { get; set; }
-        [Required]
+        [Required(ErrorMessage ="ტელეფონის ნომერი აუცილებელია")]
         [MaxLength(9, ErrorMessage = "გთხოვთ გადაამოწმოთ შეყვანილი ტელეფონის ნომერი")]
         [Display(Name = "ტელეფონის ნომერი")]
         public string PhoneNumber { get; set; }
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
-        [Required]
+        [Required(ErrorMessage ="საკონტაქტო ელ-ფოსტა აუცილებელია")]
         [Display(Name = "საკონტაქტო ფოსტა")]
         public string Mail { get; set; }
     }

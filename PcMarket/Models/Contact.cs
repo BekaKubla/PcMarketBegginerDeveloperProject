@@ -8,13 +8,15 @@ namespace PcMarket.Models
 {
     public class Contact
     {
-        [Display(Name ="სახელი")]
+        [Required(ErrorMessage ="*** სახელის შეყვანა აუცილებელია")]
         public string FirstName { get; set; }
-        [Display(Name ="გვარი")]
+        [Required(ErrorMessage ="*** გვარის შეყვანა აუცილებელია")]
         public string LastName { get; set; }
-        [Display(Name ="ელ-ფოსტა")]
+        [Required(ErrorMessage ="*** ელ-ფოსტა აუცილებელია")]
         public string Mail { get; set; }
-        [Display(Name ="შეტყობინება")]
+        [Required(ErrorMessage ="*** სათაურის მითითება აუცილებელია")]
+        public string Title { get; set; }
+        [Required(ErrorMessage ="*** აუცილებელია შეიყვანოთ ტექსტი")]
         public string Subject { get; set; }
     }
 }
