@@ -25,5 +25,7 @@ namespace PcMarket.ViewModels.PcPartViewModels
         [Required(ErrorMessage ="საკონტაქტო ელ-ფოსტა აუცილებელია")]
         [Display(Name = "საკონტაქტო ფოსტა")]
         public string Mail { get; set; }
+        [Display(Name = "შეკვეთის თარიღი")]
+        public string DateTimeNow { get; set; }
     }
 }

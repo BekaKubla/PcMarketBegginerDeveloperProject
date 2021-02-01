@@ -1,16 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
-using PcMarket.Models;
+﻿using PcMarket.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PcMarket.ViewModels
+namespace PcMarket.ViewModels.PcPartViewModels
 {
-    public class PcPartCreateViewModel
+    public class PcPartCategoryViewModel
     {
+        public int CategoryId { get; set; }
         [Required(ErrorMessage = "*** შეიყვანეთ სახელი")]
         [Display(Name = "ნივთის სახელი")]
         public string PartName { get; set; }
@@ -20,15 +19,13 @@ namespace PcMarket.ViewModels
         [Required(ErrorMessage = "*** აირჩიეთ კატეგორია")]
         [Display(Name = "კატეგორია")]
         public Category PartCategory { get; set; }
-        [Required(ErrorMessage ="aeee")]
+        [Range(0, 100000, ErrorMessage = "გთხოვთ მიუთითეთ ფასი")]
         [Display(Name = "ფასი")]
         public int PartPrice { get; set; }
         [Display(Name = "აღწერა")]
         [Required(ErrorMessage = "*** აუცილებელია დაწერეთ ნივთის აღწერა")]
         [MaxLength(450)]
         public string PartDescribtion { get; set; }
-        [NotMapped]
-        [Display(Name ="ფოტო")]
-        public IFormFile ImageFile { get; set; }
+        public string FileName { get; set; }
     }
 }

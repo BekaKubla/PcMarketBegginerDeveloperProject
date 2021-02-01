@@ -10,20 +10,20 @@ namespace PcMarket.Models
     public class PcPartProp
     {
         public int ID { get; set; }
-        [Required]
+        [Required(ErrorMessage ="*** შეიყვანეთ სახელი")]
         [Display(Name ="ნივთის სახელი")]
         public string PartName { get; set; }
-        [Required]
+        [Required(ErrorMessage ="*** აირჩიეთ მდგომარეობა")]
         [Display(Name ="მდგომარეობა")]
         public Condition PartCondition { get; set; }
-        [Required]
+        [Required(ErrorMessage ="*** აირჩიეთ კატეგორია")]
         [Display(Name ="კატეგორია")]
         public Category PartCategory{ get; set; }
-        [Required]
+        [Range(0,100000,ErrorMessage ="გთხოვთ მიუთითეთ ფასი")]
         [Display(Name ="ფასი")]
         public int PartPrice { get; set; }
         [Display(Name = "აღწერა")]
-        [Required]
+        [Required(ErrorMessage ="*** აუცილებელია დაწერეთ ნივთის აღწერა")]
         [MaxLength(450)]
         public string PartDescribtion { get; set; }
         public string FileName { get; set; }
@@ -32,54 +32,35 @@ namespace PcMarket.Models
 
     public enum Category
     {
-         None,
+        [Display(Name ="აირჩიეთ კატეგორია")]
+         None=0,
         [Display(Name ="პროცესორები")]
-        Cpu,
+        Cpu=1,
         [Display(Name ="დედაბარათები")]
-        MotherBoard,
+        MotherBoard=2,
         [Display(Name ="ვიდეობარათები")]
-        GPU,
+        GPU=3,
         [Display(Name ="ვინჩესტერები HDD")]
-        HDD,
+        HDD=4,
         [Display(Name ="ვინჩესტერები SSD")]
-        SSD,
+        SSD=5,
         [Display(Name ="ვინჩესტერები SSD-M2")]
-        M2,
+        M2=6,
         [Display(Name ="კვების ბლოკები")]
-        PSU,
-        [Display(Name ="მექსიერების მოდულები")]
-        RAM,
-        [Display(Name ="ქეისები")]
-        Case,
+        PSU=7,
+        [Display(Name ="მეხსიერების მოდულები")]
+        RAM=8,
+        [Display(Name ="კეისები")]
+        Case=9,
         [Display(Name ="ქულერები")]
-        Cooler,
+        Cooler=10,
 
     }
     public enum Condition
     {
+        [Display(Name ="აირჩიეთ მდგომარეობა")]
         None,
         ახალი,
         მეორადი
-    }
-    public static class temp
-    {
-
-        public static string DisplayName(this Enum value)
-        {
-            Type enumType = value.GetType();
-            var enumValue = Enum.GetName(enumType, value);
-            MemberInfo member = enumType.GetMember(enumValue)[0];
-
-            var attrs = member.GetCustomAttributes(typeof(DisplayAttribute), false);
-            var outString = ((DisplayAttribute)attrs[0]).Name;
-
-            if (((DisplayAttribute)attrs[0]).ResourceType != null)
-            {
-                outString = ((DisplayAttribute)attrs[0]).GetName();
-            }
-
-            return outString;
-        }
-
     }
 }

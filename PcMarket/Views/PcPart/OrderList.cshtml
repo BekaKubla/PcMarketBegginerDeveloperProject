@@ -17,6 +17,7 @@
             <th>@Html.DisplayNameFor(model=>model.Mail)</th>
             <th>@Html.DisplayNameFor(model=>model.PartName)</th>
             <th>@Html.DisplayNameFor(model=>model.PartPrice)</th>
+            <th>@Html.DisplayNameFor(model=>model.DateTimeNow)</th>
         </tr>
     </thead>
     <tbody>
@@ -43,6 +44,9 @@
                 </td>
                 <td>
                     @item.PartPrice ლარი
+                </td>
+                <td>
+                    @item.DateTimeNow
                 </td>
                 <td>
                     <a asp-controller="pcpart" asp-action="DeleteOrder" asp-route-id="@item.Id">შეკვეთის წაშლა</a>

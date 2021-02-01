@@ -29,8 +29,8 @@ namespace PcMarket.Controllers
         [HttpGet]
         public ActionResult List()
         {
-            var model = _pcRepo.GetAllParts();
-            return View(model);
+            var getAll = _pcRepo.GetAllParts();
+            return View(getAll);
         }
         [HttpGet]
         public ActionResult Details(int id,PcPartDetailsViewModel pcPartDetailsViewModel)
@@ -50,7 +50,6 @@ namespace PcMarket.Controllers
                 pcPartDetailsViewModel.ImageFile = getID.FileName;
             }
             return View(pcPartDetailsViewModel);
-
         }
         [HttpGet]
         public IActionResult Create()
@@ -159,7 +158,9 @@ namespace PcMarket.Controllers
             pcPartOrderDetailsView.PartName = getId.PartName;
             pcPartOrderDetailsView.PartCondition = getId.PartCondition;
             pcPartOrderDetailsView.PartPrice = getId.PartPrice;
-            if (!ModelState.IsValid)
+            var datetimeNow = DateTime.Now.ToString("dd/MMMM/yyyy HH:mm");
+            pcPartOrderDetailsView.DateTimeNow = datetimeNow;
+            if (ModelState.IsValid)
             {
                 return View();
             }
@@ -170,8 +171,9 @@ namespace PcMarket.Controllers
                 Adress = pcPartOrderDetailsView.Adress,
                 PhoneNumber = pcPartOrderDetailsView.PhoneNumber,
                 Mail = pcPartOrderDetailsView.Mail,
-                PartName=pcPartOrderDetailsView.PartName,
-                PartPrice=pcPartOrderDetailsView.PartPrice
+                PartName = pcPartOrderDetailsView.PartName,
+                PartPrice = pcPartOrderDetailsView.PartPrice,
+                DateTimeNow = pcPartOrderDetailsView.DateTimeNow
             };
             _PcPartOrder.CreateOrder(orderProp);
             _PcPartOrder.SaveChange();

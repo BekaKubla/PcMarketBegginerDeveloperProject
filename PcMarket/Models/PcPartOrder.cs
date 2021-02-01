@@ -30,5 +30,7 @@ namespace PcMarket.Models
         public string PartName { get; set; }
         [Display(Name="პროდუქტის ფასი")]
         public int PartPrice { get; set; }
+        [Display(Name="შეკვეთის თარიღი")]
+        public string DateTimeNow { get; set; }
     }
 }
