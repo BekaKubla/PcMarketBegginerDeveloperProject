@@ -155,6 +155,7 @@ namespace PcMarket.Controllers
         public IActionResult Order(PcPartOrderDetailsView pcPartOrderDetailsView)
         {
             var getId = _pcRepo.GetPartByID(pcPartOrderDetailsView.Id);
+            pcPartOrderDetailsView.PartId = getId.ID;
             pcPartOrderDetailsView.PartName = getId.PartName;
             pcPartOrderDetailsView.PartCondition = getId.PartCondition;
             pcPartOrderDetailsView.PartPrice = getId.PartPrice;
@@ -166,6 +167,7 @@ namespace PcMarket.Controllers
             }
             var orderProp = new PcPartOrder
             {
+                PartId = pcPartOrderDetailsView.PartId,
                 Name = pcPartOrderDetailsView.Name,
                 Surname = pcPartOrderDetailsView.Surname,
                 Adress = pcPartOrderDetailsView.Adress,

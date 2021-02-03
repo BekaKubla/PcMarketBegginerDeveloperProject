@@ -11,6 +11,8 @@ namespace PcMarket.ViewModels
     public class PcPartDetailsViewModel
     {
         public int Id { get; set; }
+        [Display(Name ="პროდუქტის სრულად ნახვა")]
+        public int PartId { get; set; }
         [Required]
         [Display(Name = "ნივთის სახელი")]
         public string PartName { get; set; }

@@ -18,6 +18,8 @@
             <th>@Html.DisplayNameFor(model=>model.PartName)</th>
             <th>@Html.DisplayNameFor(model=>model.PartPrice)</th>
             <th>@Html.DisplayNameFor(model=>model.DateTimeNow)</th>
+            <th>@Html.DisplayNameFor(model=>model.PartId)</th>
+
         </tr>
     </thead>
     <tbody>
@@ -47,6 +49,9 @@
                 </td>
                 <td>
                     @item.DateTimeNow
+                </td>
+                <td>
+                    <a asp-controller="pcpart" asp-action="Details" asp-route-id="@item.PartId">@item.PartName</a>
                 </td>
                 <td>
                     <a asp-controller="pcpart" asp-action="DeleteOrder" asp-route-id="@item.Id">შეკვეთის წაშლა</a>
