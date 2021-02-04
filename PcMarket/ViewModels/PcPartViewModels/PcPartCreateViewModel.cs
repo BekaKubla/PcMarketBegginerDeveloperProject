@@ -30,5 +30,8 @@ namespace PcMarket.ViewModels
         [NotMapped]
         [Display(Name ="ფოტო")]
         public IFormFile ImageFile { get; set; }
+        [Display(Name ="კატეგორია")]
+        [Required]
+        public PartOrBuild PartOrBuild { get; set; }
     }
 }

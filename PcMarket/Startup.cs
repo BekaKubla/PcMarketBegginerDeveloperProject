@@ -28,10 +28,12 @@ namespace PcMarket
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IPcPartRepos, PartRepos>();
+            services.AddTransient<IPcBuildRepo, PcBuildRepo>();
             services.AddTransient<IPcPartOrderRepo, PcPartOrderRepo>();
             services.AddMvc();
             services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PcPartContext")));
             services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PcPartOrderContext")));
+            services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PcComputerContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +51,9 @@ namespace PcMarket
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=PcPart}/{action=List}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default2",
+                    pattern: "{controller=PcBuild}/{action=PcList}/{id?}");
             });
         }
     }

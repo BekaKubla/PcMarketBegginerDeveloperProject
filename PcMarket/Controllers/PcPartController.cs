@@ -71,6 +71,7 @@ namespace PcMarket.Controllers
                 PartCategory = pcPartCreateViewModel.PartCategory,
                 PartPrice = pcPartCreateViewModel.PartPrice,
                 PartDescribtion = pcPartCreateViewModel.PartDescribtion,
+                PartOrBuild=pcPartCreateViewModel.PartOrBuild,
                 FileName = stringFileName
             };
             _pcRepo.CreatePart(pcPart);
@@ -149,6 +150,7 @@ namespace PcMarket.Controllers
             pcPartOrderDetailsView.PartName = getId.PartName;
             pcPartOrderDetailsView.PartCondition = getId.PartCondition;
             pcPartOrderDetailsView.PartPrice = getId.PartPrice;
+            pcPartOrderDetailsView.PartOrBuild = getId.PartOrBuild;
             return View(pcPartOrderDetailsView);
         }
         [HttpPost]
@@ -159,6 +161,7 @@ namespace PcMarket.Controllers
             pcPartOrderDetailsView.PartName = getId.PartName;
             pcPartOrderDetailsView.PartCondition = getId.PartCondition;
             pcPartOrderDetailsView.PartPrice = getId.PartPrice;
+            pcPartOrderDetailsView.PartOrBuild = getId.PartOrBuild;
             var datetimeNow = DateTime.Now.ToString("dd/MMMM/yyyy HH:mm");
             pcPartOrderDetailsView.DateTimeNow = datetimeNow;
             if (ModelState.IsValid)
@@ -175,16 +178,17 @@ namespace PcMarket.Controllers
                 Mail = pcPartOrderDetailsView.Mail,
                 PartName = pcPartOrderDetailsView.PartName,
                 PartPrice = pcPartOrderDetailsView.PartPrice,
+                PartOrBuild=pcPartOrderDetailsView.PartOrBuild,
                 DateTimeNow = pcPartOrderDetailsView.DateTimeNow
             };
             _PcPartOrder.CreateOrder(orderProp);
             _PcPartOrder.SaveChange();
-            return RedirectToAction("orderlist");
+            return RedirectToAction("list");
         }
         [HttpGet]
         public ActionResult OrderList()
         {
-            var model = _PcPartOrder.GetAllOrder();
+            var model = _PcPartOrder.GetOrderOnlyPart();
             return View(model);
         }
         [HttpGet]

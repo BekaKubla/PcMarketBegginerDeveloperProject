@@ -9,36 +9,49 @@ namespace PcMarket.Repositories
 {
     public class PcPartOrderRepo : IPcPartOrderRepo
     {
-        private readonly AppDbContext _dbcontext;
+        private readonly AppDbContext _context;
 
-        public PcPartOrderRepo(AppDbContext dbContext)
+        public PcPartOrderRepo(AppDbContext context)
         {
-            _dbcontext = dbContext;
+            _context = context;
         }
         public void CreateOrder(PcPartOrder pcPartOrder)
         {
-            _dbcontext.GetOrders.Add(pcPartOrder);
+            _context.GetOrders.Add(pcPartOrder);
         }
 
         public void DeleteOrder(PcPartOrder pcPartOrder)
         {
-            _dbcontext.GetOrders.Remove(pcPartOrder);
+            _context.GetOrders.Remove(pcPartOrder);
         }
 
         public IEnumerable<PcPartOrder> GetAllOrder()
         {
-            return _dbcontext.GetOrders;
+            return _context.GetOrders;
         }
 
         public PcPartOrder GetOrderById(int id)
         {
-            var findOrder = _dbcontext.GetOrders.Find(id);
-            return findOrder;
+            return _context.GetOrders.FirstOrDefault(e => e.Id == id);
+        }
+
+        public IEnumerable<PcPartOrder> GetOrderOnlyBuild()
+        {
+            var getAllOrder = _context.GetOrders;
+            var linq = getAllOrder.Where(e => e.PartOrBuild == PartOrBuild.Build);
+            return linq;
+        }
+
+        public IEnumerable<PcPartOrder> GetOrderOnlyPart()
+        {
+            var getAllOrder = _context.GetOrders;
+            var linq = getAllOrder.Where(e => e.PartOrBuild == PartOrBuild.Part);
+            return linq;
         }
 
         public bool SaveChange()
         {
-            return (_dbcontext.SaveChanges() >=0);
+            return (_context.SaveChanges()>= 0);
         }
     }
 }

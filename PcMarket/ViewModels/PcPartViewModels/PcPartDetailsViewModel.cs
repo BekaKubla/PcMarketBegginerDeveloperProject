@@ -30,5 +30,8 @@ namespace PcMarket.ViewModels
         [MaxLength(450)]
         public string PartDescribtion { get; set; }
         public string ImageFile { get; set; }
+        [Display(Name = "ნივთის კატეგორია კატეგორია")]
+        [Required]
+        public PartOrBuild PartOrBuild { get; set; }
     }
 }

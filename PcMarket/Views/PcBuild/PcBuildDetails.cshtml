@@ -1,0 +1,58 @@
+﻿@model PcMarket.ViewModels.PcComputerCreateViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<title>@ViewData["Title"]-დეტალურად</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<div class="row justify-content-center m-3">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.BuildName)</th>
+                <th>@Html.DisplayNameFor(model => model.BuildPrice)</th>
+                <th>@Html.DisplayNameFor(model => model.CustomDescription)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <img src="/images/@Model.StringFileName" class="rounded-circle" height="40" width="40" asp-append-version="true" />
+                    @Model.BuildName
+                </td>
+                <td>@Model.BuildPrice ლარი</td>
+                <td>
+                    @Model.CustomDescription
+                 <div class="card-footer text-center">
+                      <a asp-controller="pcpart" asp-action="Order" asp-route-id="@Model.ID">შეკვეთა</a>
+                 </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.AutoDescription)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                პროცესორის სახელი - @Model.ProcesorName <br />
+                დედა დაფა - @Model.Motherboard<br />
+                მეხსიერების მოდულის სახელი - @Model.MemoryName <br />
+                მეხსიერების სახელი - @Model.StorageName <br />
+                ვიდეო კარტის დასახელება - @Model.GPUName <br />
+                კეისი - @Model.Case <br />
+                კვების ბლოკი - @Model.Case <br />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-body text-center">
+                <img src="/images/@Model.StringFileName" class="rounded-circle" height="350" width="600" asp-append-version="true" />
+            </div>
+        </div>
+    </div>
+</div>

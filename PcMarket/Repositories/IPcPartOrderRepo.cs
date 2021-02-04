@@ -9,6 +9,8 @@ namespace PcMarket.Repositories
    public interface IPcPartOrderRepo
     {
         IEnumerable<PcPartOrder> GetAllOrder();
+        IEnumerable<PcPartOrder> GetOrderOnlyPart();
+        IEnumerable<PcPartOrder> GetOrderOnlyBuild();
         void CreateOrder(PcPartOrder pcPartOrder);
         void DeleteOrder(PcPartOrder pcPartOrder);
         PcPartOrder GetOrderById(int id);

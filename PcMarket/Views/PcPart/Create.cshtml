@@ -1,14 +1,20 @@
 ﻿@model PcMarket.ViewModels.PcPartCreateViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    ViewBag.Title = "Create Part";
-}
 <head>
+    <title>@ViewData["Title"]-განცხადების დამატება</title>
     <meta charset="utf-8">
     <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <form asp-controller="pcpart" asp-action="create" enctype="multipart/form-data" method="post" class="mt-3">
+    <div class="form-group row">
+        <label asp-for="PartOrBuild" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="PartOrBuild" class="custom-select mr-sm-2"
+                    asp-items="@Html.GetEnumSelectList<PcMarket.Models.PartOrBuild>()"></select>
+            <span asp-validation-for="PartOrBuild" class="text-danger"></span>
+        </div>
+    </div>
     <div class="form-group row">
         <label asp-for="PartName" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">

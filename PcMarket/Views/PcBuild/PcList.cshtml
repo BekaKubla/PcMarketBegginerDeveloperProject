@@ -1,17 +1,20 @@
-﻿@model IEnumerable<PcMarket.Models.PcPartProp>
+﻿@model IEnumerable<PcMarket.Models.PcComputerProp>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <head>
     <meta charset="utf-8">
     <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
-<h4 class="text-center text-uppercase">კომპიუტერის ნაწილები</h4>
+<h4 class="text-center text-uppercase">
+    <a class="nav-link" asp-controller="pcbuild" asp-action="PcBuildCreate"> განცხადების დამატება</a>
+</h4>
+<h4 class="text-center text-uppercase">კომპიუტერები</h4>
 
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.PartName)</th>
-            <th>@Html.DisplayNameFor(model => model.PartPrice)</th>
+            <th>@Html.DisplayNameFor(model => model.BuildName)</th>
+            <th>@Html.DisplayNameFor(model => model.BuildPrice)</th>
         </tr>
     </thead>
     <tbody>
@@ -20,17 +23,17 @@
             <tr>
                 <td>
                     <img src="/images/@item.FileName" class="rounded-circle" height="40" width="40" asp-append-version="true" />
-                    @item.PartName
+                    @item.BuildName
                     <div class="card-footer text-center">
-                        <a asp-controller="pcpart" asp-action="details" asp-route-id="@item.ID">სრულად</a>
+                        <a asp-controller="pcbuild" asp-action="PcBuildDetails" asp-route-id="@item.ID">სრულად</a>
                         <a asp-controller="pcpart" asp-action="edit" asp-route-id="@item.ID">ჩასწორება</a>
                         <a asp-controller="pcpart" asp-action="delete" asp-route-id="@item.ID">წაშლა</a>
                     </div>
                 </td>
                 <td>
-                    @item.PartPrice ლარი
+                    @item.BuildPrice ლარი
                     <div class="card-footer text-center">
-                        <a asp-controller="pcpart" asp-action="Order" asp-route-id="@item.ID">შეკვეთა</a>
+                        <a asp-controller="pcbuild" asp-action="PcBuildOrder" asp-route-id="@item.ID">შეკვეთა</a>
                     </div>
                 </td>
             </tr>

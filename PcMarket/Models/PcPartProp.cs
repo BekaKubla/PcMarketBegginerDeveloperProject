@@ -27,7 +27,19 @@ namespace PcMarket.Models
         [MaxLength(450)]
         public string PartDescribtion { get; set; }
         public string FileName { get; set; }
+        [Display(Name = "ნივთის კატეგორია კატეგორია")]
+        [Required]
+        public PartOrBuild PartOrBuild { get; set; }
 
+    }
+    public enum PartOrBuild
+    {
+        [Display(Name ="აირჩიეთ კატეგორია")]
+        Choose,
+        [Display(Name ="ნაწილი")]
+        Part,
+        [Display(Name ="კომპიუტერი")]
+        Build
     }
 
     public enum Category

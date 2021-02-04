@@ -1,0 +1,133 @@
+﻿@model PcMarket.ViewModels.PcComputerCreateViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<head>
+    <title>@ViewData["Title"]-განცხადების დამატება</title>
+    <meta charset="utf-8">
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<form asp-controller="pcbuild" asp-action="PcBuildCreate" enctype="multipart/form-data" method="post" class="mt-3">
+    <div class="form-group row">
+        <label asp-for="PartOrBuild" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="PartOrBuild" class="custom-select mr-sm-2"
+                    asp-items="@Html.GetEnumSelectList<PcMarket.Models.PartOrBuild>()"></select>
+            <span asp-validation-for="PartOrBuild" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="BuildName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="BuildName" class="form-control" />
+            <span asp-validation-for="BuildName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="ProcesorType" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="ProcesorType" class="custom-select mr-sm-2"
+                    asp-items="@Html.GetEnumSelectList<PcMarket.Models.ProcesorType>()"></select>
+            <span asp-validation-for="ProcesorType" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="ProcesorName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="ProcesorName" class="form-control" />
+            <span asp-validation-for="ProcesorName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Motherboard" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Motherboard" class="form-control" />
+            <span asp-validation-for="Motherboard" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="MemoryType" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="MemoryType" class="custom-select mr-sm-2"
+                    asp-items="@Html.GetEnumSelectList<PcMarket.Models.MemoryType>()"></select>
+            <span asp-validation-for="MemoryType" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="MemoryName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="MemoryName" class="form-control" />
+            <span asp-validation-for="MemoryName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="StorageType" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="StorageType" class="custom-select mr-sm-2"
+                    asp-items="@Html.GetEnumSelectList<PcMarket.Models.StorageType>()"></select>
+            <span asp-validation-for="StorageType" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="StorageName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="StorageName" class="form-control" />
+            <span asp-validation-for="StorageName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="GPUType" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="GPUType" class="custom-select mr-sm-2"
+                    asp-items="@Html.GetEnumSelectList<PcMarket.Models.GPUType>()"></select>
+            <span asp-validation-for="GPUType" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="GPUName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="GPUName" class="form-control" />
+            <span asp-validation-for="GPUName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Case" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Case" class="form-control" />
+            <span asp-validation-for="Case" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="PowerSupply" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="PowerSupply" class="form-control" />
+            <span asp-validation-for="PowerSupply" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="BuildPrice" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="BuildPrice" class="form-control" />
+            <span asp-validation-for="BuildPrice" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="CustomDescription" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="CustomDescription" class="form-control" />
+            <span asp-validation-for="CustomDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="FileName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="FileName" accept="image/*" />
+            <span asp-validation-for="FileName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">განხადების დამატება</button>
+            <button type="button" class="btn btn-primary" onclick="window.history.go(-1)">უკან</button>
+        </div>
+    </div>
+</form>

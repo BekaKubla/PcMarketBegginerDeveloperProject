@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PcMarket.Data;
 
 namespace PcMarket.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210203105948_addeddescription")]
+    partial class addeddescription
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,9 +45,6 @@ namespace PcMarket.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FileName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("GPUName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -64,9 +63,6 @@ namespace PcMarket.Migrations
                     b.Property<string>("Motherboard")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PartOrBuild")
-                        .HasColumnType("int");
 
                     b.Property<string>("PowerSupply")
                         .IsRequired()
@@ -119,9 +115,6 @@ namespace PcMarket.Migrations
                     b.Property<string>("PartName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PartOrBuild")
-                        .HasColumnType("int");
-
                     b.Property<int>("PartPrice")
                         .HasColumnType("int");
 
@@ -163,9 +156,6 @@ namespace PcMarket.Migrations
                     b.Property<string>("PartName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PartOrBuild")
-                        .HasColumnType("int");
 
                     b.Property<int>("PartPrice")
                         .HasColumnType("int");
