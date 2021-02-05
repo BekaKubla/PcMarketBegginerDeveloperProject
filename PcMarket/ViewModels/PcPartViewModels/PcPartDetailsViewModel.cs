@@ -32,6 +32,6 @@ namespace PcMarket.ViewModels
         public string ImageFile { get; set; }
         [Display(Name = "ნივთის კატეგორია კატეგორია")]
         [Required]
-        public PartOrBuild PartOrBuild { get; set; }
+        public PartOrBuild? PartOrBuild { get; set; }
     }
 }

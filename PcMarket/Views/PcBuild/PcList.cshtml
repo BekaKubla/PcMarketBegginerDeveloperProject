@@ -27,7 +27,7 @@
                     <div class="card-footer text-center">
                         <a asp-controller="pcbuild" asp-action="PcBuildDetails" asp-route-id="@item.ID">სრულად</a>
                         <a asp-controller="pcpart" asp-action="edit" asp-route-id="@item.ID">ჩასწორება</a>
-                        <a asp-controller="pcpart" asp-action="delete" asp-route-id="@item.ID">წაშლა</a>
+                        <a asp-controller="pcbuild" asp-action="PcBuildDelete" asp-route-id="@item.ID">წაშლა</a>
                     </div>
                 </td>
                 <td>

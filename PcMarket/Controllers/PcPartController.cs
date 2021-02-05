@@ -27,15 +27,16 @@ namespace PcMarket.Controllers
             this._webHost = webHost;
         }
         [HttpGet]
-        public ActionResult List()
+        public ActionResult List([FromQuery]Category? category)
         {
-            var getAll = _pcRepo.GetAllParts();
+            var getAll = _pcRepo.GetAllParts(category);
             return View(getAll);
         }
         [HttpGet]
-        public ActionResult Details(int id,PcPartDetailsViewModel pcPartDetailsViewModel)
+        public ActionResult Details(int id)
         {
             var getID = _pcRepo.GetPartByID(id);
+            PcPartDetailsViewModel pcPartDetailsViewModel = new PcPartDetailsViewModel();
             if (getID == null)
             {
                 return NotFound();
@@ -52,10 +53,7 @@ namespace PcMarket.Controllers
             return View(pcPartDetailsViewModel);
         }
         [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
+        public IActionResult Create() => View();
         [HttpPost]
         public IActionResult Create(PcPartCreateViewModel pcPartCreateViewModel)
         {
@@ -109,9 +107,10 @@ namespace PcMarket.Controllers
             return RedirectToAction("list");
         }
         [HttpGet]
-        public IActionResult Edit(int id, PcPartEditViewModel pcPartEditViewModel)
+        public IActionResult Edit(int id)
         {
             var findPart = _pcRepo.GetPartByID(id);
+            PcPartEditViewModel pcPartEditViewModel = new PcPartEditViewModel();
             pcPartEditViewModel.PartName = findPart.PartName;
             pcPartEditViewModel.PartCondition = findPart.PartCondition;
             pcPartEditViewModel.PartCategory = findPart.PartCategory;
@@ -140,9 +139,10 @@ namespace PcMarket.Controllers
             return RedirectToAction("details", new { id = findPart.ID });
         }
         [HttpGet]
-        public ActionResult Order(int id, PcPartOrderDetailsView pcPartOrderDetailsView)
+        public ActionResult Order(int id)
         {
             var getId = _pcRepo.GetPartByID(id);
+            PcPartOrderDetailsView pcPartOrderDetailsView = new PcPartOrderDetailsView();
             if (getId == null)
             {
                 return NotFound();
@@ -156,6 +156,10 @@ namespace PcMarket.Controllers
         [HttpPost]
         public IActionResult Order(PcPartOrderDetailsView pcPartOrderDetailsView)
         {
+            if (ModelState.IsValid)
+            {
+                return View(pcPartOrderDetailsView);
+            }
             var getId = _pcRepo.GetPartByID(pcPartOrderDetailsView.Id);
             pcPartOrderDetailsView.PartId = getId.ID;
             pcPartOrderDetailsView.PartName = getId.PartName;
@@ -164,10 +168,6 @@ namespace PcMarket.Controllers
             pcPartOrderDetailsView.PartOrBuild = getId.PartOrBuild;
             var datetimeNow = DateTime.Now.ToString("dd/MMMM/yyyy HH:mm");
             pcPartOrderDetailsView.DateTimeNow = datetimeNow;
-            if (ModelState.IsValid)
-            {
-                return View();
-            }
             var orderProp = new PcPartOrder
             {
                 PartId = pcPartOrderDetailsView.PartId,
@@ -178,7 +178,7 @@ namespace PcMarket.Controllers
                 Mail = pcPartOrderDetailsView.Mail,
                 PartName = pcPartOrderDetailsView.PartName,
                 PartPrice = pcPartOrderDetailsView.PartPrice,
-                PartOrBuild=pcPartOrderDetailsView.PartOrBuild,
+                PartOrBuild = pcPartOrderDetailsView.PartOrBuild,
                 DateTimeNow = pcPartOrderDetailsView.DateTimeNow
             };
             _PcPartOrder.CreateOrder(orderProp);
@@ -205,10 +205,7 @@ namespace PcMarket.Controllers
             return RedirectToAction("OrderList");
         }
         [HttpGet]
-        public IActionResult Contact()
-        {
-            return View();
-        }
+        public IActionResult Contact() => View();
         [HttpPost]
         public IActionResult Contact(Contact contact)
         {

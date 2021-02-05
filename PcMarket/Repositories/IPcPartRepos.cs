@@ -9,7 +9,7 @@ namespace PcMarket.Repositories
     public interface IPcPartRepos
     {
         bool SaveChange();
-        IEnumerable<PcPartProp> GetAllParts();
+        IEnumerable<PcPartProp> GetAllParts(Category? category);
         PcPartProp GetPartByID(int id);
         PcPartProp CreatePart(PcPartProp pcPartProp);
         void DeletePart(PcPartProp pcPartProp);

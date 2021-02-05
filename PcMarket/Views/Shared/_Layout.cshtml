@@ -55,28 +55,27 @@
                         <li class="dropdown">
                             <a class="nav-link" asp-controller="pcpart" asp-action="List">ნაწილები</a>
                             <div class="dropdown-content">
-
-                                <a href="#">პროცესორები</a>
-                                <a href="#">დედაბარათები</a>
-                                <a href="#">ვიდეობარათები</a>
-                                <a href="#">ვინჩესტერები HDD</a>
-                                <a href="#">ვინჩესტერები SSD</a>
-                                <a href="#">ვინჩესტერები SSD-M2</a>
-                                <a href="#">კვების ბლოკები</a>
-                                <a href="#">მეხსიერების მოდულები</a>
-                                <a href="#">კეისები</a>
-                                <a href="#">ქულერები</a>
+                                <a class="nav-link" asp-controller="pcpart" asp-action="List" asp-route-category="@PcMarket.Models.Category.Cpu">პროცესორები</a>
+                                <a class="nav-link" asp-controller="pcpart" asp-action="List" asp-route-category="@PcMarket.Models.Category.MotherBoard">დედაბარათები</a>
+                                <a class="nav-link" asp-controller="pcpart" asp-action="List" asp-route-category="@PcMarket.Models.Category.GPU">ვიდეო ბარათი</a>
+                                <a class="nav-link" asp-controller="pcpart" asp-action="List" asp-route-category="@PcMarket.Models.Category.HDD">ვინჩესტერი HDD</a>
+                                <a class="nav-link" asp-controller="pcpart" asp-action="List" asp-route-category="@PcMarket.Models.Category.SSD">ვინჩესტერი SSD</a>
+                                <a class="nav-link" asp-controller="pcpart" asp-action="List" asp-route-category="@PcMarket.Models.Category.M2">ვინჩესტერი M2-SSD</a>
+                                <a class="nav-link" asp-controller="pcpart" asp-action="List" asp-route-category="@PcMarket.Models.Category.PSU">კვების ბლოკები</a>
+                                <a class="nav-link" asp-controller="pcpart" asp-action="List" asp-route-category="@PcMarket.Models.Category.RAM">მეხსიერების მოდულები</a>
+                                <a class="nav-link" asp-controller="pcpart" asp-action="List" asp-route-category="@PcMarket.Models.Category.Case">კეისები</a>
+                                <a class="nav-link" asp-controller="pcpart" asp-action="List" asp-route-category="@PcMarket.Models.Category.MotherBoard">ქულერები</a>
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="PcBuild" asp-action="pclist">კომპიუტერები</a>
                         </li>
                         <li class="dropdown">
                             <a class="nav-link">შეკვეთები</a>
                             <div class="dropdown-content">
                                 <a class="nav-link" asp-controller="pcpart" asp-action="OrderList">ნაწილების შეკვეთები</a>
-                                <a class="nav-link" asp-controller="PcBuild" asp-action="PcBuildOrderList">კომპიუტერების შეკვეთები</a>
+                                <a class="nav-link" asp-controller="pcbuild" asp-action="pcbuildorderlist">კომპიუტერების შეკვეთები</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="PcBuild" asp-action="pclist">კომპიუტერები</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="pcpart" asp-action="Contact">კონტაქტი</a>

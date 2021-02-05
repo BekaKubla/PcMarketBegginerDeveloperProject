@@ -157,18 +157,22 @@ namespace PcMarket.Controllers
             return RedirectToAction("pclist");
         }
         [HttpGet]
+        public IActionResult PcBuildDelete (int id)
+        {
+            var part = _pcBuild.GetBuildById(id);
+            if (part == null)
+            {
+                return NotFound();
+            }
+            _pcBuild.DeletePcBuild(part);
+            _pcBuild.SaveChange();
+            return RedirectToAction("pclist");
+        }
+        [HttpGet]
         public ActionResult PcBuildOrderList()
         {
             var getOrders = _partOrder.GetOrderOnlyBuild();
             return View(getOrders);
-         }
-        [HttpGet]
-        public IActionResult PcBuildDelete (int id)
-        {
-            var findId = _partOrder.GetOrderById(id);
-            _partOrder.DeleteOrder(findId);
-            _partOrder.SaveChange();
-            return RedirectToAction("pcbuildorderlist");
         }
     }
 }

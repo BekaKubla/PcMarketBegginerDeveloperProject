@@ -27,9 +27,14 @@ namespace PcMarket.Repositories
             _dbContext.GetPcParts.Remove(pcPartProp);
         }
 
-        public IEnumerable<PcPartProp> GetAllParts()
+        public IEnumerable<PcPartProp> GetAllParts(Category? category)
         {
-            return _dbContext.GetPcParts;
+            if (category.HasValue)
+            {
+                return _dbContext.GetPcParts.Where(e => e.PartCategory == category.Value).ToArray();
+            }
+
+            return _dbContext.GetPcParts.ToArray();
         }
 
         public PcPartProp GetPartByID(int id)

@@ -35,11 +35,11 @@ namespace PcMarket.Models
     public enum PartOrBuild
     {
         [Display(Name ="აირჩიეთ კატეგორია")]
-        Choose,
+        Choose=0,
         [Display(Name ="ნაწილი")]
-        Part,
+        Part=1,
         [Display(Name ="კომპიუტერი")]
-        Build
+        Build=2
     }
 
     public enum Category

@@ -30,11 +30,6 @@ namespace PcMarket.Repositories
             return _context.GetOrders;
         }
 
-        public PcPartOrder GetOrderById(int id)
-        {
-            return _context.GetOrders.FirstOrDefault(e => e.Id == id);
-        }
-
         public IEnumerable<PcPartOrder> GetOrderOnlyBuild()
         {
             var getAllOrder = _context.GetOrders;
@@ -47,6 +42,10 @@ namespace PcMarket.Repositories
             var getAllOrder = _context.GetOrders;
             var linq = getAllOrder.Where(e => e.PartOrBuild == PartOrBuild.Part);
             return linq;
+        }
+        public PcPartOrder GetOrderById(int id)
+        {
+            return _context.GetOrders.FirstOrDefault(e => e.Id == id);
         }
 
         public bool SaveChange()
