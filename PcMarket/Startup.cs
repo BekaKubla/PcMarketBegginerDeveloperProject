@@ -31,9 +31,7 @@ namespace PcMarket
             services.AddTransient<IPcBuildRepo, PcBuildRepo>();
             services.AddTransient<IPcPartOrderRepo, PcPartOrderRepo>();
             services.AddMvc();
-            services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PcPartContext")));
-            services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PcPartOrderContext")));
-            services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PcComputerContext")));
+            services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PcMarketContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
