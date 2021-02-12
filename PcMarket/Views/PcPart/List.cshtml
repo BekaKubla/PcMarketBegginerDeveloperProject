@@ -1,39 +1,26 @@
 ﻿@model IEnumerable<PcMarket.Models.PcPartProp>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<head>
-    <meta charset="utf-8">
-    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <title>@ViewData["Title"]-კომპიუტერის ნაწილები</title>
-</head>
-<h4 class="text-center text-uppercase">კომპიუტერის ნაწილები</h4>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.PartName)</th>
-            <th>@Html.DisplayNameFor(model => model.PartPrice)</th>
+@{
+    ViewData["Title"] = ViewBag.Title;
+}
 
-        </tr>
-    </thead>
-    <tbody>
+<h1 class="display-4 pb-5">@ViewBag.Title</h1>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <img src="/images/@item.FileName" class="rounded-circle" height="40" width="40" asp-append-version="true" />
-                    @item.PartName
-                    <div class="card-footer text-center">
-                        <a asp-controller="pcpart" asp-action="details" asp-route-id="@item.ID">სრულად</a>
-                    </div>
-                </td>
-                <td>
-                    @item.PartPrice ლარი
-                    <div class="card-footer text-center">
-                        <a asp-controller="pcpart" asp-action="Order" asp-route-id="@item.ID">შეკვეთა</a>
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-4">
+        <img src="~/images/@item.FileName" class="img-fluid" alt="" />
+        <h4>@item.PartName</h4>
+        <div>
+            @Html.Raw(item.PartDescribtion)
+        </div>
+        <p>
+            @item.PartPrice.ToString("C2")
+        </p>
+        <p>
+            <a asp-area="" asp-controller="pcpart" asp-action="order" asp-route-id="@item.ID" class="btn btn-primary">შეკვეთა</a>
+        </p>
+    </div>
+    }
+</div>

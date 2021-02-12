@@ -25,7 +25,12 @@ namespace PcMarket.Areas.Admin.Controllers
             var findOrder = _repo.GetOrderById(id);
             _repo.DeleteOrder(findOrder);
             _repo.SaveChange();
-            return RedirectToAction("index");
+            return RedirectToAction("partorder");
+        }
+        public IActionResult GetOrders()
+        {
+            var getOrders = _repo.GetAllOrder();
+            return View(getOrders);
         }
         [HttpGet]
         public ActionResult BuildOrder()

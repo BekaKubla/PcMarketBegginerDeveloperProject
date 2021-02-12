@@ -1,58 +1,96 @@
 ﻿@model PcMarket.ViewModels.PcComputerCreateViewModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<title>@ViewData["Title"]-დეტალურად</title>
-<meta charset="utf-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<div class="row justify-content-center m-3">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.BuildName)</th>
-                <th>@Html.DisplayNameFor(model => model.BuildPrice)</th>
-                <th>@Html.DisplayNameFor(model => model.CustomDescription)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <img src="/images/@Model.StringFileName" class="rounded-circle" height="40" width="40" asp-append-version="true" />
-                    @Model.BuildName
-                </td>
-                <td>@Model.BuildPrice ლარი</td>
-                <td>
-                    @Model.CustomDescription
-                 <div class="card-footer text-center">
-                      <a asp-controller="pcpart" asp-action="Order" asp-route-id="@Model.ID">შეკვეთა</a>
-                 </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.AutoDescription)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                პროცესორის სახელი - @Model.ProcesorName <br />
-                დედა დაფა - @Model.Motherboard<br />
-                მეხსიერების მოდულის სახელი - @Model.MemoryName <br />
-                მეხსიერების სახელი - @Model.StorageName <br />
-                ვიდეო კარტის დასახელება - @Model.GPUName <br />
-                კეისი - @Model.Case <br />
-                კვების ბლოკი - @Model.Case <br />
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="col-sm-8">
-        <div class="card">
-            <div class="card-body text-center">
-                <img src="/images/@Model.StringFileName" class="rounded-circle" height="350" width="600" asp-append-version="true" />
-            </div>
-        </div>
-    </div>
+
+@{
+    ViewData["Title"] =@ViewBag.Title;
+}
+
+<h1>კომპიუტერები</h1>
+
+<div>
+    <h4>@ViewBag.Title</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProcesorType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProcesorType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProcesorName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProcesorName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Motherboard)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Motherboard)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MemoryType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MemoryType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MemoryName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MemoryName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StorageType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StorageType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StorageName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StorageName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GPUType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GPUType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GPUName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GPUName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Case)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Case)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PowerSupply)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PowerSupply)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AutoDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AutoDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BuildPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BuildPrice)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
 </div>

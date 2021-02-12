@@ -19,7 +19,6 @@
             <th>@Html.DisplayNameFor(model => model.PartName)</th>
             <th>@Html.DisplayNameFor(model => model.PartPrice)</th>
             <th>@Html.DisplayNameFor(model => model.DateTimeNow)</th>
-            <th>@Html.DisplayNameFor(model => model.PartId)</th>
 
         </tr>
     </thead>
@@ -44,8 +43,11 @@
                 </td>
 
                 <td>
-                    <a asp-controller="pcbuild" asp-action="pcbuilddetails" asp-route-id="@item.PartId">@item.PartName</a>
+                   <a asp-area="" asp-controller="pcbuild" asp-action="details" asp-route-id="@item.PartId">@item.PartName</a>
                 </td>
+                <td>
+                </td>
+
                 <td>
                     @item.PartPrice ლარი
                 </td>
@@ -53,7 +55,7 @@
                     @item.DateTimeNow
                 </td>
                 <td>
-                    <a asp-controller="pcbuild" asp-action="pcbuilddelete" asp-route-id="@item.Id">შეკვეთის წაშლა</a>
+                    <a asp-area="admin" asp-controller="order" asp-action="delete" asp-route-id="@item.Id">შეკვეთის წაშლა</a>
                 </td>
             </tr>
         }

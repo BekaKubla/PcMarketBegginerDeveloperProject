@@ -35,7 +35,7 @@ namespace PcMarket.Models
         public string StorageName { get; set; }
         [Display(Name ="ვიდეო დაფის ტიპი")]
         [Required]
-        public string GPUType { get; set; }
+        public GPUType GPUType { get; set; }
         [Display(Name ="ვიდეო დაფის სახელი")]
         [Required]
         public string GPUName { get; set; }

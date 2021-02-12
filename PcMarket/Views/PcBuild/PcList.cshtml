@@ -1,40 +1,27 @@
 ﻿@model IEnumerable<PcMarket.Models.PcComputerProp>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<head>
-    <meta charset="utf-8">
-    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-</head>
-<h4 class="text-center text-uppercase">
-    <a class="nav-link" asp-controller="pcbuild" asp-action="PcBuildCreate"> განცხადების დამატება</a>
-</h4>
-<h4 class="text-center text-uppercase">კომპიუტერები</h4>
+@{
+    ViewData["Title"] = "Builds";
+}
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.BuildName)</th>
-            <th>@Html.DisplayNameFor(model => model.BuildPrice)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <img src="/images/@item.FileName" class="rounded-circle" height="40" width="40" asp-append-version="true" />
-                    @item.BuildName
-                    <div class="card-footer text-center">
-                        <a asp-controller="pcbuild" asp-action="PcBuildDetails" asp-route-id="@item.ID">სრულად</a>
-                    </div>
-                </td>
-                <td>
-                    @item.BuildPrice ლარი
-                    <div class="card-footer text-center">
-                        <a asp-controller="pcbuild" asp-action="PcBuildOrder" asp-route-id="@item.ID">შეკვეთა</a>
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<h1 class="display-4 pb-5">კომპიუტერები</h1>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-4">
+        <img src="~/images/@item.FileName" class="img-fluid" alt="" />
+        <h4>@item.BuildName</h4>
+        <div>
+            @Html.Raw(item.CustomDescription)
+        </div>
+        <p>
+            @item.BuildPrice.ToString("C2")
+        </p>
+        <p>
+            <a asp-area="" asp-controller="pcbuild" asp-action="pcbuilddetails" asp-route-id="@item.ID" class="btn btn-primary">დეტალურად</a>
+            <a asp-area="" asp-controller="pcbuild" asp-action="PcBuildOrder" asp-route-id="@item.ID" class="btn btn-primary">შეკვეთა</a>
+        </p>
+    </div>
+    }
+</div>

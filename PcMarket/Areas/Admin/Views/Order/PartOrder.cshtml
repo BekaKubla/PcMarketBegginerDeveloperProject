@@ -19,43 +19,45 @@
             <th>@Html.DisplayNameFor(model => model.PartName)</th>
             <th>@Html.DisplayNameFor(model => model.PartPrice)</th>
             <th>@Html.DisplayNameFor(model => model.DateTimeNow)</th>
-            <th>@Html.DisplayNameFor(model => model.PartId)</th>
 
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @item.Name
-                </td>
-                <td>
-                    @item.Surname
-                </td>
-                <td>
-                    @item.Adress
-                </td>
-                <td>
-                    @item.PhoneNumber
-                </td>
-                <td>
-                    @item.Mail
-                </td>
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Surname
+            </td>
+            <td>
+                @item.Adress
+            </td>
+            <td>
+                @item.PhoneNumber
+            </td>
+            <td>
+                @item.Mail
+            </td>
 
-                <td>
-                    <a asp-controller="pcbuild" asp-action="pcbuilddetails" asp-route-id="@item.PartId">@item.PartName</a>
-                </td>
-                <td>
-                    @item.PartPrice ლარი
-                </td>
-                <td>
-                    @item.DateTimeNow
-                </td>
-                <td>
-                    <a asp-controller="pcbuild" asp-action="pcbuilddelete" asp-route-id="@item.Id">შეკვეთის წაშლა</a>
-                </td>
-            </tr>
+            <td>
+                <a asp-area="" asp-controller="pcpart" asp-action="details" asp-route-id="@item.PartId">@item.PartName</a>
+            </td>
+            <td>
+            </td>
+
+            <td>
+                @item.PartPrice ლარი
+            </td>
+            <td>
+                @item.DateTimeNow
+            </td>
+            <td>
+                <a asp-area="admin" asp-controller="order" asp-action="delete" asp-route-id="@item.Id">შეკვეთის წაშლა</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

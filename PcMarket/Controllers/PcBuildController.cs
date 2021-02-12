@@ -56,6 +56,7 @@ namespace PcMarket.Controllers
                 pcComputerCreateViewModel.BuildPrice = findId.BuildPrice;
                 pcComputerCreateViewModel.CustomDescription = findId.CustomDescription;
                 pcComputerCreateViewModel.StringFileName = findId.FileName;
+                ViewBag.Title = findId.BuildName;
             }
             return View(pcComputerCreateViewModel);
         }

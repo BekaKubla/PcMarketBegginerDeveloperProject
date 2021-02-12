@@ -18,18 +18,24 @@ namespace PcMarket.Controllers
     {
         private readonly IPcPartRepos _pcRepo;
         private readonly IPcPartOrderRepo _PcPartOrder;
-        private readonly IWebHostEnvironment _webHost;
 
-        public PcPartController(IPcPartRepos pcRepo,IPcPartOrderRepo pcPartOrder,IWebHostEnvironment webHost)
+        public PcPartController(IPcPartRepos pcRepo,IPcPartOrderRepo pcPartOrder)
         {
             _pcRepo = pcRepo;
             _PcPartOrder = pcPartOrder;
-            this._webHost = webHost;
         }
         [HttpGet]
         public ActionResult List([FromQuery]Category? category)
         {
             var getAll = _pcRepo.GetAllParts(category);
+            if (category != null)
+            {
+                ViewBag.Title = category.DisplayName();
+            }
+            else
+            {
+                ViewBag.Title = "ნაწილები";
+            }
             return View(getAll);
         }
         [HttpGet]

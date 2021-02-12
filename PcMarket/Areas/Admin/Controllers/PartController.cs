@@ -56,6 +56,7 @@ namespace PcMarket.Areas.Admin.Controllers
             };
             _repo.CreatePart(pcPart);
             _repo.SaveChange();
+            TempData["Success"] = "პროდუქტი დამატებულია!";
             return RedirectToAction("index");
         }
         private string UploadFile(PcPartCreateViewModel pcPartCreateViewModel)
@@ -80,6 +81,8 @@ namespace PcMarket.Areas.Admin.Controllers
             var getPart = _repo.GetPartByID(id);
             _repo.DeletePart(getPart);
             _repo.SaveChange();
+            TempData["Delete"] = "პროდუქტი წაშლილია!";
+            
             return RedirectToAction("index");
         }
         [HttpGet]

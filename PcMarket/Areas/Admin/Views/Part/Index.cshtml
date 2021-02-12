@@ -1,47 +1,62 @@
 ﻿@model IEnumerable<PcMarket.Models.PcPartProp>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<head>
-    <meta charset="utf-8">
-    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <title>@ViewData["Title"]-კომპიუტერის ნაწილები</title>
-</head>
-<h4 class="text-center text-uppercase">
-    <a class="nav-link" asp-area="admin" asp-controller="part" asp-action="Create"> განცხადების დამატება</a>
-</h4>
-<h4 class="text-center text-uppercase">კომპიუტერის ნაწილები</h4>
-<table class="table table-bordered">
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.PartName)</th>
-            <th>@Html.DisplayNameFor(model => model.PartPrice)</th>
-            <th>@Html.DisplayNameFor(model => model.PartCondition)</th>
-            <th>@Html.DisplayNameFor(model => model.PartDescribtion)</th>
-            <th>@Html.DisplayNameFor(model => model.PartOrBuild)</th>
-            <th>@Html.DisplayNameFor(model => model.PartCategory)</th>
-
+            <th>
+                @Html.DisplayNameFor(model => model.PartName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartCondition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartDescribtion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartOrBuild)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartCategory)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-
         @foreach (var item in Model)
         {
         <tr>
             <td>
-                <img src="/images/@item.FileName" class="rounded-circle" height="40" width="40" asp-append-version="true" />
-                @item.PartName
-                <div class="card-footer text-center">
-                    <a asp-area="admin" asp-controller="part" asp-action="edit" asp-route-id="@item.ID">ჩასწორება</a>
-                    <a asp-area="admin" asp-controller="part" asp-action="delete" asp-route-id="@item.ID">წაშლა</a>
-                </div>
+                @Html.DisplayFor(modelItem => item.PartName)
             </td>
             <td>
-                @item.PartPrice ლარი
+                @Html.DisplayFor(modelItem => item.PartPrice)
             </td>
-            <td>@item.PartCondition</td>
-            <td>@item.PartDescribtion</td>
-            <td>@item.PartOrBuild</td>
-            <td>@item.PartCategory</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartCondition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartDescribtion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartOrBuild)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartCategory)
+            </td>
+
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+            </td>
         </tr>
         }
     </tbody>

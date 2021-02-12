@@ -1,68 +1,33 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <style>
-        #menu ul li {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            width:200px;
-            float:left;
-            position:relative;
-        }
-            #menu li a, .dropbtn {
-                display:block;
-                color: white;
-                text-align:center;
-                padding: 14px 16px;
-                text-decoration: none;
-            }
-                #menu li a:hover, .dropdown:hover .dropbtn {
-                    background-color: darkgreen;
-                    color:white;
-                }
-
-            #menu li.dropdown {
-                display: inline-block;
-            }
-        #menu .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-            #menu .dropdown-content a {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-                text-align: left;
-            }
-        #menu .dropdown:hover .dropdown-content {
-            display: block;
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <div id="menu">
-        <div class="navbar navbar-inverse navbar-fixed">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="pcpart" asp-action="list">Main Page</a>
+                            <a class="nav-link" asp-area="" asp-controller="pcpart" asp-action="list">დაბრუნება მთავარი გვერდზე</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="admin" asp-controller="part" asp-action="index">admin part list </a>
+                            <a class="nav-link" asp-area="admin" asp-controller="part" asp-action="index">ნაწილები</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="admin" asp-controller="build" asp-action="index">admin build list </a>
+                            <a class="nav-link" asp-area="admin" asp-controller="build" asp-action="index">კომპიუტერები</a>
                         </li>
                         <li class="dropdown">
-                            <a class="nav-link">შეკვეთები</a>
+                            <a class="nav-link" asp-area="admin"asp-controller="order"asp-action="GetOrders">შეკვეთები</a>
                             <div class="dropdown-content">
                                 <a class="nav-link" asp-area="admin" asp-controller="order" asp-action="PartOrder">ნაწილების შეკვეთები</a>
                                 <a class="nav-link" asp-area="admin" asp-controller="order" asp-action="BuildOrder">კომპიუტერების შეკვეთები</a>
@@ -71,14 +36,22 @@
                     </ul>
                 </div>
             </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - CourseHunter - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-    </div>
-    @if (IsSectionDefined("Scripts"))
-    {
-        @RenderSection("Scripts", required: false)
-    }
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

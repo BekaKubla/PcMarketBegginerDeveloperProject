@@ -50,9 +50,8 @@ namespace PcMarket.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GPUType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("GPUType")
+                        .HasColumnType("int");
 
                     b.Property<string>("MemoryName")
                         .IsRequired()

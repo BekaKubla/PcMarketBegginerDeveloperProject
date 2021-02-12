@@ -9,7 +9,6 @@ namespace PcMarket.Models
     public class PcPartOrder
     {
         public int Id { get; set; }
-        [Display(Name = "პროდუქტის სრულად ნახვა")]
         public int PartId { get; set; }
         [Required]
         [Display(Name ="სახელი")]
