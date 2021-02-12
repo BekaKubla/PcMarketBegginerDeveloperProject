@@ -70,12 +70,8 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="PcBuild" asp-action="pclist">კომპიუტერები</a>
                         </li>
-                        <li class="dropdown">
-                            <a class="nav-link">შეკვეთები</a>
-                            <div class="dropdown-content">
-                                <a class="nav-link" asp-controller="pcpart" asp-action="OrderList">ნაწილების შეკვეთები</a>
-                                <a class="nav-link" asp-controller="pcbuild" asp-action="pcbuildorderlist">კომპიუტერების შეკვეთები</a>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="admin" asp-controller="part" asp-action="index">Admin Panel</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="pcpart" asp-action="Contact">კონტაქტი</a>

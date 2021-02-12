@@ -43,6 +43,7 @@ namespace PcMarket.Controllers
             }
             else
             {
+                pcPartDetailsViewModel.Id = getID.ID;
                 pcPartDetailsViewModel.PartName = getID.PartName;
                 pcPartDetailsViewModel.PartCondition = getID.PartCondition;
                 pcPartDetailsViewModel.PartCategory = getID.PartCategory;
@@ -52,92 +53,7 @@ namespace PcMarket.Controllers
             }
             return View(pcPartDetailsViewModel);
         }
-        [HttpGet]
-        public IActionResult Create() => View();
-        [HttpPost]
-        public IActionResult Create(PcPartCreateViewModel pcPartCreateViewModel)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            string stringFileName = UploadFile(pcPartCreateViewModel);
-            var pcPart = new PcPartProp
-            {
-                PartName = pcPartCreateViewModel.PartName,
-                PartCondition = pcPartCreateViewModel.PartCondition,
-                PartCategory = pcPartCreateViewModel.PartCategory,
-                PartPrice = pcPartCreateViewModel.PartPrice,
-                PartDescribtion = pcPartCreateViewModel.PartDescribtion,
-                PartOrBuild=pcPartCreateViewModel.PartOrBuild,
-                FileName = stringFileName
-            };
-            _pcRepo.CreatePart(pcPart);
-            _pcRepo.SaveChange();
-            return RedirectToAction("list");
-        }
-
-        private string UploadFile(PcPartCreateViewModel pcPartCreateViewModel)
-        {
-            string fileName = null;
-            if (pcPartCreateViewModel.ImageFile != null)
-            {
-                string uploadDir = Path.Combine(_webHost.WebRootPath, "Images");
-                fileName = Guid.NewGuid().ToString() + "-" + pcPartCreateViewModel.ImageFile.FileName;
-                string filePath = Path.Combine(uploadDir, fileName);
-                using (var fileStream=new FileStream(filePath, FileMode.Create))
-                {
-                    pcPartCreateViewModel.ImageFile.CopyTo(fileStream);
-                }
-            }
-            
-            return fileName;
-        }
-
-        [HttpGet]
-        public ActionResult Delete(int id)
-        {
-            var findCar = _pcRepo.GetPartByID(id);
-            if (findCar == null)
-            {
-                return NotFound();
-            }
-            _pcRepo.DeletePart(findCar);
-            _pcRepo.SaveChange();
-            return RedirectToAction("list");
-        }
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            var findPart = _pcRepo.GetPartByID(id);
-            PcPartEditViewModel pcPartEditViewModel = new PcPartEditViewModel();
-            pcPartEditViewModel.PartName = findPart.PartName;
-            pcPartEditViewModel.PartCondition = findPart.PartCondition;
-            pcPartEditViewModel.PartCategory = findPart.PartCategory;
-            pcPartEditViewModel.PartPrice = findPart.PartPrice;
-            pcPartEditViewModel.PartDescribtion = findPart.PartDescribtion;
-            return View(pcPartEditViewModel);
-
-        }
-        [HttpPost]
-        public IActionResult Edit(PcPartEditViewModel pcPartEditViewModel,int id)
-        {
-            var findPart = _pcRepo.GetPartByID(id);
-            if (findPart == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                findPart.PartName = pcPartEditViewModel.PartName;
-                findPart.PartCategory = pcPartEditViewModel.PartCategory;
-                findPart.PartCondition = pcPartEditViewModel.PartCondition;
-                findPart.PartPrice = pcPartEditViewModel.PartPrice;
-                findPart.PartDescribtion = pcPartEditViewModel.PartDescribtion;
-                _pcRepo.SaveChange();
-            }
-            return RedirectToAction("details", new { id = findPart.ID });
-        }
+        
         [HttpGet]
         public ActionResult Order(int id)
         {
@@ -184,25 +100,6 @@ namespace PcMarket.Controllers
             _PcPartOrder.CreateOrder(orderProp);
             _PcPartOrder.SaveChange();
             return RedirectToAction("list");
-        }
-        [HttpGet]
-        public ActionResult OrderList()
-        {
-            var model = _PcPartOrder.GetOrderOnlyPart();
-            return View(model);
-        }
-        [HttpGet]
-        public IActionResult DeleteOrder(int id)
-        {
-
-            var findOrder = _PcPartOrder.GetOrderById(id);
-            if (findOrder == null)
-            {
-                return NotFound();
-            }
-            _PcPartOrder.DeleteOrder(findOrder);
-            _PcPartOrder.SaveChange();
-            return RedirectToAction("OrderList");
         }
         [HttpGet]
         public IActionResult Contact() => View();

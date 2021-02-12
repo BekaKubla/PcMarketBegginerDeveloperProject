@@ -33,14 +33,14 @@ namespace PcMarket.Repositories
         public IEnumerable<PcPartOrder> GetOrderOnlyBuild()
         {
             var getAllOrder = _context.GetOrders;
-            var linq = getAllOrder.Where(e => e.PartOrBuild == PartOrBuild.Build);
+            var linq = getAllOrder.Where(e => e.PartOrBuild == PartOrBuild.კომპიუტერი);
             return linq;
         }
 
         public IEnumerable<PcPartOrder> GetOrderOnlyPart()
         {
             var getAllOrder = _context.GetOrders;
-            var linq = getAllOrder.Where(e => e.PartOrBuild == PartOrBuild.Part);
+            var linq = getAllOrder.Where(e => e.PartOrBuild == PartOrBuild.ნაწილი);
             return linq;
         }
         public PcPartOrder GetOrderById(int id)

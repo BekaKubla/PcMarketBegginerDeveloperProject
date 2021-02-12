@@ -6,9 +6,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>@ViewData["Title"]-კომპიუტერის ნაწილები</title>
 </head>
-<h4 class="text-center text-uppercase" >
-    <a class="nav-link" asp-controller="pcpart" asp-action="Create" > განცხადების დამატება</a >
-    </h4 >
 <h4 class="text-center text-uppercase">კომპიუტერის ნაწილები</h4>
 <table class="table table-bordered">
     <thead>
@@ -28,8 +25,6 @@
                     @item.PartName
                     <div class="card-footer text-center">
                         <a asp-controller="pcpart" asp-action="details" asp-route-id="@item.ID">სრულად</a>
-                        <a asp-controller="pcpart" asp-action="edit" asp-route-id="@item.ID">ჩასწორება</a>
-                        <a asp-controller="pcpart" asp-action="delete" asp-route-id="@item.ID">წაშლა</a>
                     </div>
                 </td>
                 <td>

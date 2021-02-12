@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <h4 class="text-center text-uppercase">
-    <a class="nav-link" asp-controller="pcbuild" asp-action="PcBuildCreate"> განცხადების დამატება</a>
+    <a class="nav-link" asp-area="admin" asp-controller="build" asp-action="create"> განცხადების დამატება</a>
 </h4>
 <h4 class="text-center text-uppercase">კომპიუტერები</h4>
 
@@ -25,7 +25,8 @@
                     <img src="/images/@item.FileName" class="rounded-circle" height="40" width="40" asp-append-version="true" />
                     @item.BuildName
                     <div class="card-footer text-center">
-                        <a asp-controller="pcbuild" asp-action="PcBuildDetails" asp-route-id="@item.ID">სრულად</a>
+                        <a asp-area="admin" asp-controller="build" asp-action="edit" asp-route-id="@item.ID">ჩასწორება</a>
+                        <a asp-area="admin" asp-controller="build" asp-action="delete" asp-route-id="@item.ID">წაშლა</a>
                     </div>
                 </td>
                 <td>
