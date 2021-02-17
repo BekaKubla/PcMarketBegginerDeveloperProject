@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -47,7 +48,7 @@ namespace PcMarket.Models
         public string PowerSupply { get; set; }
         [Display(Name ="ფასი")]
         [Required]
-        public int BuildPrice { get; set; }
+        public string BuildPrice { get; set; }
         [Display(Name ="აღწერა")]
         [Required]
         public string CustomDescription { get; set; }

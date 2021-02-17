@@ -16,7 +16,7 @@
             @Html.Raw(item.PartDescribtion)
         </div>
         <p>
-            @item.PartPrice.ToString("C2")
+            @item.PartPrice
         </p>
         <p>
             <a asp-area="" asp-controller="pcpart" asp-action="order" asp-route-id="@item.ID" class="btn btn-primary">შეკვეთა</a>

@@ -7,12 +7,17 @@ using PcMarket.ViewModels;
 using PcMarket.ViewModels.PcPartViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace PcMarket.Areas.Admin.Controllers
 {
+    public static class Cultures
+    {
+        public static readonly CultureInfo Georgia = CultureInfo.GetCultureInfo("ka-GE");
+    }
     [Area("admin")]
     public class PartController:Controller
     {
@@ -49,7 +54,7 @@ namespace PcMarket.Areas.Admin.Controllers
                 PartName = pcPartCreateViewModel.PartName,
                 PartCondition = pcPartCreateViewModel.PartCondition,
                 PartCategory = pcPartCreateViewModel.PartCategory,
-                PartPrice = pcPartCreateViewModel.PartPrice,
+                PartPrice = pcPartCreateViewModel.PartPrice.ToString("C2",Cultures.Georgia),
                 PartDescribtion = pcPartCreateViewModel.PartDescribtion,
                 PartOrBuild = PartOrBuild.ნაწილი,
                 FileName = stringFileName

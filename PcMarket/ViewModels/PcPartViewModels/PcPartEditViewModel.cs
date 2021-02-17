@@ -18,7 +18,7 @@ namespace PcMarket.ViewModels.PcPartViewModels
         [Display(Name = "კატეგორია")]
         public Category PartCategory { get; set; }
         [Display(Name = "ფასი")]
-        public int PartPrice { get; set; }
+        public string PartPrice { get; set; }
         [Display(Name = "აღწერა")]
         [MaxLength(450)]
         public string PartDescribtion { get; set; }

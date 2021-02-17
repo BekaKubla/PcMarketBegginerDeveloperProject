@@ -8,6 +8,7 @@ using PcMarket.ViewModels;
 using PcMarket.ViewModels.PcPartViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,7 +16,8 @@ using System.Threading.Tasks;
 namespace PcMarket.Controllers
 {
     public class PcPartController :Controller
-    {
+    { 
+
         private readonly IPcPartRepos _pcRepo;
         private readonly IPcPartOrderRepo _PcPartOrder;
 
@@ -38,6 +40,7 @@ namespace PcMarket.Controllers
             }
             return View(getAll);
         }
+        
         [HttpGet]
         public ActionResult Details(int id)
         {
@@ -53,7 +56,7 @@ namespace PcMarket.Controllers
                 pcPartDetailsViewModel.PartName = getID.PartName;
                 pcPartDetailsViewModel.PartCondition = getID.PartCondition;
                 pcPartDetailsViewModel.PartCategory = getID.PartCategory;
-                pcPartDetailsViewModel.PartPrice = getID.PartPrice;
+                //pcPartDetailsViewModel.PartPrice = getID.PartPrice;
                 pcPartDetailsViewModel.PartDescribtion = getID.PartDescribtion;
                 pcPartDetailsViewModel.ImageFile = getID.FileName;
             }
@@ -71,7 +74,7 @@ namespace PcMarket.Controllers
             }
             pcPartOrderDetailsView.PartName = getId.PartName;
             pcPartOrderDetailsView.PartCondition = getId.PartCondition;
-            pcPartOrderDetailsView.PartPrice = getId.PartPrice;
+            //pcPartOrderDetailsView.PartPrice = getId.PartPrice;
             pcPartOrderDetailsView.PartOrBuild = getId.PartOrBuild;
             return View(pcPartOrderDetailsView);
         }
@@ -86,7 +89,7 @@ namespace PcMarket.Controllers
             pcPartOrderDetailsView.PartId = getId.ID;
             pcPartOrderDetailsView.PartName = getId.PartName;
             pcPartOrderDetailsView.PartCondition = getId.PartCondition;
-            pcPartOrderDetailsView.PartPrice = getId.PartPrice;
+            //pcPartOrderDetailsView.PartPrice = getId.PartPrice;
             pcPartOrderDetailsView.PartOrBuild = getId.PartOrBuild;
             var datetimeNow = DateTime.Now.ToString("dd/MMMM/yyyy HH:mm");
             pcPartOrderDetailsView.DateTimeNow = datetimeNow;

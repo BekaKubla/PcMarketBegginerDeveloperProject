@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace PcMarket.Models
         public Category PartCategory{ get; set; }
         [Range(0,100000,ErrorMessage ="გთხოვთ მიუთითეთ ფასი")]
         [Display(Name ="ფასი")]
-        public int PartPrice { get; set; }
+        public string PartPrice { get; set; }
         [Display(Name = "აღწერა")]
         [Required(ErrorMessage ="*** აუცილებელია დაწერეთ ნივთის აღწერა")]
         [MaxLength(450)]

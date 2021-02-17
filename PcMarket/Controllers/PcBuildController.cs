@@ -7,6 +7,7 @@ using PcMarket.ViewModels.PcComputerViewModel;
 using PcMarket.ViewModels.PcPartViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace PcMarket.Controllers
         public ActionResult PcList()
         {
             var getAll = _pcBuild.GetAllPc();
+            
             return View(getAll);
         }
         [HttpGet]
@@ -53,7 +55,7 @@ namespace PcMarket.Controllers
                 pcComputerCreateViewModel.GPUName = findId.GPUName;
                 pcComputerCreateViewModel.Case = findId.Case;
                 pcComputerCreateViewModel.PowerSupply = findId.PowerSupply;
-                pcComputerCreateViewModel.BuildPrice = findId.BuildPrice;
+                pcComputerCreateViewModel.BuildPrice = int.Parse(findId.BuildPrice);
                 pcComputerCreateViewModel.CustomDescription = findId.CustomDescription;
                 pcComputerCreateViewModel.StringFileName = findId.FileName;
                 ViewBag.Title = findId.BuildName;
@@ -69,7 +71,7 @@ namespace PcMarket.Controllers
                 return NotFound();
             }
             pcBuildOrderDetailsView.BuildName = getId.BuildName;
-            pcBuildOrderDetailsView.BuildPrice = getId.BuildPrice;
+            pcBuildOrderDetailsView.BuildPrice = int.Parse(getId.BuildPrice);
             pcBuildOrderDetailsView.PartOrBuild = getId.PartOrBuild;
             return View(pcBuildOrderDetailsView);
         }
@@ -79,7 +81,7 @@ namespace PcMarket.Controllers
             var findComputer = _pcBuild.GetBuildById(pcBuildOrderDetailsView.ID);
             pcBuildOrderDetailsView.Id = findComputer.ID;
             pcBuildOrderDetailsView.BuildName = findComputer.BuildName;
-            pcBuildOrderDetailsView.BuildPrice = findComputer.BuildPrice;
+            pcBuildOrderDetailsView.BuildPrice = int.Parse(findComputer.BuildPrice);
             pcBuildOrderDetailsView.PartOrBuild = findComputer.PartOrBuild;
             var DateTimeNow = DateTime.Now.ToString("dd/MMMM/yyyy HH:mm");
             pcBuildOrderDetailsView.DateTimeNow = DateTimeNow;

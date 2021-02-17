@@ -1,9 +1,8 @@
 ﻿@model IEnumerable<PcMarket.Models.PcComputerProp>
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Builds";
 }
-
 <h1 class="display-4 pb-5">კომპიუტერები</h1>
 
 <div class="row">
@@ -16,7 +15,7 @@
             @Html.Raw(item.CustomDescription)
         </div>
         <p>
-            @item.BuildPrice.ToString("C2")
+            @item.BuildPrice
         </p>
         <p>
             <a asp-area="" asp-controller="pcbuild" asp-action="pcbuilddetails" asp-route-id="@item.ID" class="btn btn-primary">დეტალურად</a>

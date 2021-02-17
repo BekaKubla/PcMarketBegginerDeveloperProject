@@ -6,12 +6,14 @@ using PcMarket.Repositories;
 using PcMarket.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace PcMarket.Areas.Admin.Controllers
 {
+
     [Area("admin")]
     public class BuildController : Controller
     {
@@ -61,7 +63,7 @@ namespace PcMarket.Areas.Admin.Controllers
                 GPUName = pcComputerCreateViewModel.GPUName,
                 Case = pcComputerCreateViewModel.Case,
                 PowerSupply = pcComputerCreateViewModel.PowerSupply,
-                BuildPrice = pcComputerCreateViewModel.BuildPrice,
+                BuildPrice = pcComputerCreateViewModel.BuildPrice.ToString("C2",Cultures.Georgia),
                 CustomDescription = pcComputerCreateViewModel.CustomDescription,
                 PartOrBuild = PartOrBuild.კომპიუტერი,
                 FileName = stringFileName
@@ -94,7 +96,7 @@ namespace PcMarket.Areas.Admin.Controllers
             var findProduct = _repo.GetBuildById(id);
             PcComputerCreateViewModel buildVm = new PcComputerCreateViewModel();
             buildVm.BuildName = findProduct.BuildName;
-            buildVm.BuildPrice = findProduct.BuildPrice;
+            buildVm.BuildPrice = int.Parse(findProduct.BuildPrice);
             buildVm.Case = findProduct.Case;
             buildVm.CustomDescription = findProduct.CustomDescription;
             buildVm.GPUName = findProduct.GPUName;
@@ -120,7 +122,7 @@ namespace PcMarket.Areas.Admin.Controllers
             else
             {
                 findPart.BuildName = pcComputerCreateViewModel.BuildName;
-                findPart.BuildPrice = pcComputerCreateViewModel.BuildPrice;
+                findPart.BuildPrice = pcComputerCreateViewModel.BuildPrice.ToString();
                 findPart.Case = pcComputerCreateViewModel.Case;
                 findPart.CustomDescription = pcComputerCreateViewModel.CustomDescription;
                 findPart.GPUName = pcComputerCreateViewModel.GPUName;
