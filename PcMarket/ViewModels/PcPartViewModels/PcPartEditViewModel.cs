@@ -18,7 +18,9 @@ namespace PcMarket.ViewModels.PcPartViewModels
         [Display(Name = "კატეგორია")]
         public Category PartCategory { get; set; }
         [Display(Name = "ფასი")]
+        [RegularExpression("^[0-9-.]*$", ErrorMessage = "შეიყვანეთ მხოლოდ ფასი \n მაგ: 2500.99")]
         public string PartPrice { get; set; }
+        public double DisplayPartPrice { get; set; }
         [Display(Name = "აღწერა")]
         [MaxLength(450)]
         public string PartDescribtion { get; set; }

@@ -24,7 +24,7 @@ namespace PcMarket.ViewModels
         public Category PartCategory { get; set; }
         [Required]
         [Display(Name = "ფასი")]
-        public int PartPrice { get; set; }
+        public string PartPrice { get; set; }
         [Display(Name = "აღწერა")]
         [Required]
         [MaxLength(450)]

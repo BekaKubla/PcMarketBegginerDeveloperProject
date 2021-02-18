@@ -14,6 +14,6 @@ namespace PcMarket.ViewModels.PcComputerViewModel
         public string BuildName { get; set; }
         [Display(Name = "ფასი")]
         [Required]
-        public int BuildPrice { get; set; }
+        public string BuildPrice { get; set; }
     }
 }

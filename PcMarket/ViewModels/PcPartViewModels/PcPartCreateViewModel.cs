@@ -22,7 +22,7 @@ namespace PcMarket.ViewModels
         public Category PartCategory { get; set; }
         [Required(ErrorMessage ="aeee")]
         [Display(Name = "ფასი")]
-        public int PartPrice { get; set; }
+        public double PartPrice { get; set; }
         [Display(Name = "აღწერა")]
         [Required(ErrorMessage = "*** აუცილებელია დაწერეთ ნივთის აღწერა")]
         [MaxLength(450)]

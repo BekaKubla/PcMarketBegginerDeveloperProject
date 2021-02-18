@@ -30,7 +30,7 @@ namespace PcMarket.Models
         [Display(Name="პროდუქტის დასახელება")]
         public string PartName { get; set; }
         [Display(Name="პროდუქტის ფასი")]
-        public int PartPrice { get; set; }
+        public string PartPrice { get; set; }
         [Display(Name="შეკვეთის თარიღი")]
         public string DateTimeNow { get; set; }
         [Display(Name = "ნივთის კატეგორია კატეგორია")]

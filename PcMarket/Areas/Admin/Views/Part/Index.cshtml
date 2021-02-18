@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<PcMarket.Models.PcPartProp>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<h1>Index</h1>
+<h1>ნაწილები</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -19,9 +19,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PartDescribtion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PartOrBuild)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PartCategory)
@@ -46,15 +43,12 @@
                 @Html.DisplayFor(modelItem => item.PartDescribtion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PartOrBuild)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.PartCategory)
             </td>
 
             <td>
                 <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+               
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
             </td>
         </tr>

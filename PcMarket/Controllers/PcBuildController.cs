@@ -71,7 +71,7 @@ namespace PcMarket.Controllers
                 return NotFound();
             }
             pcBuildOrderDetailsView.BuildName = getId.BuildName;
-            pcBuildOrderDetailsView.BuildPrice = int.Parse(getId.BuildPrice);
+            pcBuildOrderDetailsView.BuildPrice = getId.BuildPrice;
             pcBuildOrderDetailsView.PartOrBuild = getId.PartOrBuild;
             return View(pcBuildOrderDetailsView);
         }
@@ -81,11 +81,11 @@ namespace PcMarket.Controllers
             var findComputer = _pcBuild.GetBuildById(pcBuildOrderDetailsView.ID);
             pcBuildOrderDetailsView.Id = findComputer.ID;
             pcBuildOrderDetailsView.BuildName = findComputer.BuildName;
-            pcBuildOrderDetailsView.BuildPrice = int.Parse(findComputer.BuildPrice);
+            pcBuildOrderDetailsView.BuildPrice = findComputer.BuildPrice;
             pcBuildOrderDetailsView.PartOrBuild = findComputer.PartOrBuild;
             var DateTimeNow = DateTime.Now.ToString("dd/MMMM/yyyy HH:mm");
             pcBuildOrderDetailsView.DateTimeNow = DateTimeNow;
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View();
             }

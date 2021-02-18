@@ -122,7 +122,7 @@ namespace PcMarket.Areas.Admin.Controllers
             else
             {
                 findPart.BuildName = pcComputerCreateViewModel.BuildName;
-                findPart.BuildPrice = pcComputerCreateViewModel.BuildPrice.ToString();
+                findPart.BuildPrice = pcComputerCreateViewModel.BuildPrice.ToString("C2",Cultures.Georgia);
                 findPart.Case = pcComputerCreateViewModel.Case;
                 findPart.CustomDescription = pcComputerCreateViewModel.CustomDescription;
                 findPart.GPUName = pcComputerCreateViewModel.GPUName;

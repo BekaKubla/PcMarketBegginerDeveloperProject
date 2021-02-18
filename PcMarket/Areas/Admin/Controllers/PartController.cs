@@ -111,11 +111,18 @@ namespace PcMarket.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             else
             {
                 findPart.PartName = pcPartEditViewModel.PartName;
                 findPart.PartCategory = pcPartEditViewModel.PartCategory;
                 findPart.PartCondition = pcPartEditViewModel.PartCondition;
+                pcPartEditViewModel.DisplayPartPrice = double.Parse(pcPartEditViewModel.PartPrice);
+                findPart.PartPrice = pcPartEditViewModel.PartPrice;
+                pcPartEditViewModel.PartPrice = pcPartEditViewModel.DisplayPartPrice.ToString("C", Cultures.Georgia);
                 findPart.PartPrice = pcPartEditViewModel.PartPrice;
                 findPart.PartDescribtion = pcPartEditViewModel.PartDescribtion;
                 _repo.SaveChange();

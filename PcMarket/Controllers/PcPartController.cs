@@ -74,14 +74,14 @@ namespace PcMarket.Controllers
             }
             pcPartOrderDetailsView.PartName = getId.PartName;
             pcPartOrderDetailsView.PartCondition = getId.PartCondition;
-            //pcPartOrderDetailsView.PartPrice = getId.PartPrice;
+            pcPartOrderDetailsView.PartPrice = getId.PartPrice;
             pcPartOrderDetailsView.PartOrBuild = getId.PartOrBuild;
             return View(pcPartOrderDetailsView);
         }
         [HttpPost]
         public IActionResult Order(PcPartOrderDetailsView pcPartOrderDetailsView)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(pcPartOrderDetailsView);
             }
@@ -89,7 +89,7 @@ namespace PcMarket.Controllers
             pcPartOrderDetailsView.PartId = getId.ID;
             pcPartOrderDetailsView.PartName = getId.PartName;
             pcPartOrderDetailsView.PartCondition = getId.PartCondition;
-            //pcPartOrderDetailsView.PartPrice = getId.PartPrice;
+            pcPartOrderDetailsView.PartPrice = getId.PartPrice;
             pcPartOrderDetailsView.PartOrBuild = getId.PartOrBuild;
             var datetimeNow = DateTime.Now.ToString("dd/MMMM/yyyy HH:mm");
             pcPartOrderDetailsView.DateTimeNow = datetimeNow;

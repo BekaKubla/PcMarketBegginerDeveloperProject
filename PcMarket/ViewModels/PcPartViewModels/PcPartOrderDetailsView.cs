@@ -21,7 +21,7 @@ namespace PcMarket.ViewModels.PcPartViewModels
         [MaxLength(9, ErrorMessage = "გთხოვთ გადაამოწმოთ შეყვანილი ტელეფონის ნომერი")]
         [Display(Name = "ტელეფონის ნომერი")]
         public string PhoneNumber { get; set; }
-        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "მეილი არასწორია")]
         [Required(ErrorMessage ="საკონტაქტო ელ-ფოსტა აუცილებელია")]
         [Display(Name = "საკონტაქტო ფოსტა")]
         public string Mail { get; set; }
