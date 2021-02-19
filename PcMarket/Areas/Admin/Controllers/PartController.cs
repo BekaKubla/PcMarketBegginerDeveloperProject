@@ -54,6 +54,7 @@ namespace PcMarket.Areas.Admin.Controllers
                 PartName = pcPartCreateViewModel.PartName,
                 PartCondition = pcPartCreateViewModel.PartCondition,
                 PartCategory = pcPartCreateViewModel.PartCategory,
+                PartPriceWithoutC2 = pcPartCreateViewModel.PartPrice,
                 PartPrice = pcPartCreateViewModel.PartPrice.ToString("C2",Cultures.Georgia),
                 PartDescribtion = pcPartCreateViewModel.PartDescribtion,
                 PartOrBuild = PartOrBuild.ნაწილი,
