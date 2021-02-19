@@ -47,6 +47,7 @@ namespace PcMarket.ViewModels
         [Display(Name = "კვების ბლოკის სახელი")]
         [Required]
         public string PowerSupply { get; set; }
+        public string DisplayBuildPrice { get; set; }
         [Display(Name = "ფასი")]
         [Required]
         public int BuildPrice { get; set; }

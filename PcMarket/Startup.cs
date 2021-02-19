@@ -27,6 +27,8 @@ namespace PcMarket
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
+            services.AddSession();
             services.AddTransient<IPcPartRepos, PartRepos>();
             services.AddTransient<IPcBuildRepo, PcBuildRepo>();
             services.AddTransient<IPcPartOrderRepo, PcPartOrderRepo>();
@@ -41,9 +43,11 @@ namespace PcMarket
             {
                 app.UseDeveloperExceptionPage();
             }
+            
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

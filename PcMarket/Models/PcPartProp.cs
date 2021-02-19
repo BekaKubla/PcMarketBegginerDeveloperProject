@@ -43,6 +43,7 @@ namespace PcMarket.Models
         [Range(0,100000,ErrorMessage ="გთხოვთ მიუთითეთ ფასი")]
         [Display(Name ="ფასი")]
         public string PartPrice { get; set; }
+        public int PartPriceWithoutC2 { get; set; }
         [Display(Name = "აღწერა")]
         [Required(ErrorMessage ="*** აუცილებელია დაწერეთ ნივთის აღწერა")]
         [MaxLength(450)]

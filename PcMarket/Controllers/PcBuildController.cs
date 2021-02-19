@@ -55,7 +55,7 @@ namespace PcMarket.Controllers
                 pcComputerCreateViewModel.GPUName = findId.GPUName;
                 pcComputerCreateViewModel.Case = findId.Case;
                 pcComputerCreateViewModel.PowerSupply = findId.PowerSupply;
-                pcComputerCreateViewModel.BuildPrice = int.Parse(findId.BuildPrice);
+                pcComputerCreateViewModel.DisplayBuildPrice = findId.BuildPrice;
                 pcComputerCreateViewModel.CustomDescription = findId.CustomDescription;
                 pcComputerCreateViewModel.StringFileName = findId.FileName;
                 ViewBag.Title = findId.BuildName;
