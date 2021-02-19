@@ -58,5 +58,19 @@ namespace PcMarket.Areas.Admin.Controllers
             HttpContext.Session.SetJson("Cart", cart);
             return RedirectToAction("Index");
         }
+        public IActionResult Remove(int id)
+        {
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+            cart.RemoveAll(x => x.ProductId == id);
+            if (cart.Count == 0)
+            {
+                HttpContext.Session.Remove("Cart");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Cart", cart);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

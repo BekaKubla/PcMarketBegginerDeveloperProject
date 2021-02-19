@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PcMarket.Infrastructure
 {
-    public static class SeassionExtensions
+    public static class SessionExtensions
     {
         public static void SetJson(this ISession session,string key,object value)
         {
