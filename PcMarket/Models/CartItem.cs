@@ -27,15 +27,12 @@ namespace PcMarket.Models
         }
         public CartItem(PcPartProp pcPart)
         {
-            if (pcPart!=null)
-            {
                 ProductId = pcPart.ID;
                 ProductName = pcPart.PartName;
                 Quantity = 1;
                 Price = pcPart.PartPriceWithoutC2;
                 DisplayPrice = pcPart.PartPrice;
                 Image = pcPart.FileName;
-            }
         }
         public CartItem(PcComputerProp computerProp)
         {
