@@ -19,7 +19,7 @@
         </p>
         <p>
             <a asp-area="" asp-controller="pcbuild" asp-action="pcbuilddetails" asp-route-id="@item.ID" class="btn btn-primary">დეტალურად</a>
-            <a asp-area="" asp-controller="pcbuild" asp-action="PcBuildOrder" asp-route-id="@item.ID" class="btn btn-primary">შეკვეთა</a>
+            <a asp-controller="Cart" asp-action="add" asp-route-id="@item.ID" class="btn btn-primary">კალათაში დამატება</a>
         </p>
     </div>
     }

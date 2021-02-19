@@ -31,7 +31,6 @@ namespace PcMarket
             services.AddSession();
             services.AddTransient<IPcPartRepos, PartRepos>();
             services.AddTransient<IPcBuildRepo, PcBuildRepo>();
-            services.AddTransient<IPcPartOrderRepo, PcPartOrderRepo>();
             services.AddMvc();
             services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PcMarketContext")));
         }

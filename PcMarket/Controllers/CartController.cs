@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace PcMarket.Areas.Admin.Controllers
 {
-    [Area("admin")]
     public class CartController : Controller
     {
         private readonly AppDbContext _context;
@@ -32,18 +31,37 @@ namespace PcMarket.Areas.Admin.Controllers
         }
         public IActionResult Add(int id)
         {
+            
             PcPartProp pcPart = _context.GetPcParts.Where(e => e.ID == id).FirstOrDefault();
-            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
-            CartItem cartItem = cart.Where(x => x.ProductId == id).FirstOrDefault();
-            if (cartItem == null)
+            PcComputerProp pcComputerProp = _context.GetComputers.Where(e => e.ID == id).FirstOrDefault();
+            if (pcPart!=null)
             {
-                cart.Add(new CartItem(pcPart));
+                List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+                CartItem cartItem = cart.Where(x => x.ProductId == id).FirstOrDefault();
+                if (cartItem == null)
+                {
+                    cart.Add(new CartItem(pcPart));
+                }
+                else
+                {
+                    cartItem.Quantity += 1;
+                }
+                HttpContext.Session.SetJson("Cart", cart);
             }
             else
             {
-                cartItem.Quantity += 1;
+                List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+                CartItem cartItem = cart.Where(x => x.ProductId == id).FirstOrDefault();
+                if (cartItem == null)
+                {
+                    cart.Add(new CartItem(pcComputerProp));
+                }
+                else
+                {
+                    cartItem.Quantity += 1;
+                }
+                HttpContext.Session.SetJson("Cart", cart);
             }
-            HttpContext.Session.SetJson("Cart", cart);
             return RedirectToAction("Index");
         }
         public IActionResult Decrease(int id)
@@ -71,6 +89,12 @@ namespace PcMarket.Areas.Admin.Controllers
                 HttpContext.Session.SetJson("Cart", cart);
             }
             return RedirectToAction("Index");
+        }
+        public IActionResult Clear()
+        {
+            HttpContext.Session.Remove("Cart");
+            return RedirectToAction("Index");
+
         }
     }
 }

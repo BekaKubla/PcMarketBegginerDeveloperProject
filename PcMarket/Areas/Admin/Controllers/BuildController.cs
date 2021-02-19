@@ -63,6 +63,7 @@ namespace PcMarket.Areas.Admin.Controllers
                 GPUName = pcComputerCreateViewModel.GPUName,
                 Case = pcComputerCreateViewModel.Case,
                 PowerSupply = pcComputerCreateViewModel.PowerSupply,
+                BuildDoublePrice=pcComputerCreateViewModel.BuildPrice,
                 BuildPrice = pcComputerCreateViewModel.BuildPrice.ToString("C2",Cultures.Georgia),
                 CustomDescription = pcComputerCreateViewModel.CustomDescription,
                 PartOrBuild = PartOrBuild.კომპიუტერი,

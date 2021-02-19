@@ -11,7 +11,6 @@ namespace PcMarket.ViewModels.CartViewModel
     public class CartViewModel
     {
         public List<CartItem>CartItems { get; set; }
-        [Display(Name ="გადასახდელი თანხა")]
         public double GrandTotal { get; set; }
     }
 }

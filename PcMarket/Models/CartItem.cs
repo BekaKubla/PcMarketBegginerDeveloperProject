@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PcMarket.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace PcMarket.Models
 {
     public class CartItem
     {
+
         public int ProductId { get; set; }
         [Display(Name ="პროდუქტის დასახელება")]
         public string ProductName { get; set; }
@@ -25,12 +27,24 @@ namespace PcMarket.Models
         }
         public CartItem(PcPartProp pcPart)
         {
-            ProductId = pcPart.ID;
-            ProductName = pcPart.PartName;
+            if (pcPart!=null)
+            {
+                ProductId = pcPart.ID;
+                ProductName = pcPart.PartName;
+                Quantity = 1;
+                Price = pcPart.PartPriceWithoutC2;
+                DisplayPrice = pcPart.PartPrice;
+                Image = pcPart.FileName;
+            }
+        }
+        public CartItem(PcComputerProp computerProp)
+        {
+            ProductId = computerProp.ID;
+            ProductName = computerProp.BuildName;
             Quantity = 1;
-            Price = pcPart.PartPriceWithoutC2;
-            DisplayPrice = pcPart.PartPrice;
-            Image = pcPart.FileName;
+            Price = computerProp.BuildDoublePrice;
+            DisplayPrice = computerProp.BuildPrice;
+            Image = computerProp.FileName;
         }
 
     }

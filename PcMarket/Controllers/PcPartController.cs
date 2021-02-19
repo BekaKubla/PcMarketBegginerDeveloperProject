@@ -19,12 +19,11 @@ namespace PcMarket.Controllers
     { 
 
         private readonly IPcPartRepos _pcRepo;
-        private readonly IPcPartOrderRepo _PcPartOrder;
 
-        public PcPartController(IPcPartRepos pcRepo,IPcPartOrderRepo pcPartOrder)
+
+        public PcPartController(IPcPartRepos pcRepo)
         {
             _pcRepo = pcRepo;
-            _PcPartOrder = pcPartOrder;
         }
         [HttpGet]
         public ActionResult List([FromQuery]Category? category)
@@ -62,54 +61,7 @@ namespace PcMarket.Controllers
             }
             return View(pcPartDetailsViewModel);
         }
-        
-        [HttpGet]
-        public ActionResult Order(int id)
-        {
-            var getId = _pcRepo.GetPartByID(id);
-            PcPartOrderDetailsView pcPartOrderDetailsView = new PcPartOrderDetailsView();
-            if (getId == null)
-            {
-                return NotFound();
-            }
-            pcPartOrderDetailsView.PartName = getId.PartName;
-            pcPartOrderDetailsView.PartCondition = getId.PartCondition;
-            pcPartOrderDetailsView.PartPrice = getId.PartPrice;
-            pcPartOrderDetailsView.PartOrBuild = getId.PartOrBuild;
-            return View(pcPartOrderDetailsView);
-        }
-        [HttpPost]
-        public IActionResult Order(PcPartOrderDetailsView pcPartOrderDetailsView)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(pcPartOrderDetailsView);
-            }
-            var getId = _pcRepo.GetPartByID(pcPartOrderDetailsView.Id);
-            pcPartOrderDetailsView.PartId = getId.ID;
-            pcPartOrderDetailsView.PartName = getId.PartName;
-            pcPartOrderDetailsView.PartCondition = getId.PartCondition;
-            pcPartOrderDetailsView.PartPrice = getId.PartPrice;
-            pcPartOrderDetailsView.PartOrBuild = getId.PartOrBuild;
-            var datetimeNow = DateTime.Now.ToString("dd/MMMM/yyyy HH:mm");
-            pcPartOrderDetailsView.DateTimeNow = datetimeNow;
-            var orderProp = new PcPartOrder
-            {
-                PartId = pcPartOrderDetailsView.PartId,
-                Name = pcPartOrderDetailsView.Name,
-                Surname = pcPartOrderDetailsView.Surname,
-                Adress = pcPartOrderDetailsView.Adress,
-                PhoneNumber = pcPartOrderDetailsView.PhoneNumber,
-                Mail = pcPartOrderDetailsView.Mail,
-                PartName = pcPartOrderDetailsView.PartName,
-                PartPrice = pcPartOrderDetailsView.PartPrice,
-                PartOrBuild = pcPartOrderDetailsView.PartOrBuild,
-                DateTimeNow = pcPartOrderDetailsView.DateTimeNow
-            };
-            _PcPartOrder.CreateOrder(orderProp);
-            _PcPartOrder.SaveChange();
-            return RedirectToAction("list");
-        }
+
         [HttpGet]
         public IActionResult Contact() => View();
         [HttpPost]

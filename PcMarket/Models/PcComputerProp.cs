@@ -49,6 +49,7 @@ namespace PcMarket.Models
         [Display(Name ="ფასი")]
         [Required]
         public string BuildPrice { get; set; }
+        public double BuildDoublePrice { get; set; }
         [Display(Name ="აღწერა")]
         [Required]
         public string CustomDescription { get; set; }

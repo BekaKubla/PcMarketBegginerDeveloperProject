@@ -16,8 +16,7 @@
             @item.PartPrice
         </p>
         <p>
-            <a asp-area="" asp-controller="pcpart" asp-action="order" asp-route-id="@item.ID" class="btn btn-primary">შეკვეთა</a>
-            <a asp-area="admin" asp-controller="Cart" asp-action="add" asp-route-id="@item.ID" class="btn btn-primary">დამატება</a>
+            <a asp-controller="Cart" asp-action="add" asp-route-id="@item.ID" class="btn btn-primary">კალათაში დამატება</a>
         </p>
     </div>
     }

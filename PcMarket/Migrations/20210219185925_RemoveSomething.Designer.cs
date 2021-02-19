@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PcMarket.Data;
 
 namespace PcMarket.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210219185925_RemoveSomething")]
+    partial class RemoveSomething
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,9 +29,6 @@ namespace PcMarket.Migrations
 
                     b.Property<string>("AutoDescription")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("BuildDoublePrice")
-                        .HasColumnType("float");
 
                     b.Property<string>("BuildName")
                         .IsRequired()
