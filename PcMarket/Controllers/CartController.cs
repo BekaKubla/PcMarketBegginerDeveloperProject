@@ -34,7 +34,7 @@ namespace PcMarket.Areas.Admin.Controllers
             
             PcPartProp pcPart = _context.GetPcParts.Where(e => e.ID == id).FirstOrDefault();
             PcComputerProp pcComputerProp = _context.GetComputers.Where(e => e.ID == id).FirstOrDefault();
-            if (pcPart!=null)
+            if (pcPart != null)
             {
                 List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
                 CartItem cartItem = cart.Where(x => x.ProductId == id).FirstOrDefault();
@@ -47,6 +47,14 @@ namespace PcMarket.Areas.Admin.Controllers
                     cartItem.Quantity += 1;
                 }
                 HttpContext.Session.SetJson("Cart", cart);
+                if (cartItem == null)
+                {
+                    return IfPcPart();
+                }
+                else
+                {
+                    return RedirectToAction("index");
+                }
             }
             else
             {
@@ -61,14 +69,15 @@ namespace PcMarket.Areas.Admin.Controllers
                     cartItem.Quantity += 1;
                 }
                 HttpContext.Session.SetJson("Cart", cart);
-            }
-            if (pcPart != null)
-            {
-                return IfPcPart();
-            }
-            else
-            {
-                return IfPcBuilds();
+                if (cartItem == null)
+                {
+                    return IfPcBuilds();
+                }
+                else
+                {
+                    return RedirectToAction("index");
+                }
+            
             }
         }
         private IActionResult IfPcPart()

@@ -112,6 +112,7 @@ table.sorting tr:not(.home) {
 .ui-state-highlight {
     border: 1px dashed #ccc
 }
-img {
-    border-radius: 50%;
+form.paypalform{
+    position:absolute;
+    left:-3000px
 }
