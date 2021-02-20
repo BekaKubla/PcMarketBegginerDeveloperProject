@@ -62,7 +62,22 @@ namespace PcMarket.Areas.Admin.Controllers
                 }
                 HttpContext.Session.SetJson("Cart", cart);
             }
-            return RedirectToAction("Index");
+            if (pcPart != null)
+            {
+                return IfPcPart();
+            }
+            else
+            {
+                return IfPcBuilds();
+            }
+        }
+        private IActionResult IfPcPart()
+        {
+            return RedirectToAction("List", "PcPart", new { Areas = "" });
+        }
+        private IActionResult IfPcBuilds()
+        {
+            return RedirectToAction("PcList", "PcBuild", new { Areas = "" });
         }
         public IActionResult Decrease(int id)
         {

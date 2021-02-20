@@ -1,0 +1,14 @@
+﻿@model PcMarket.ViewModels.CartViewModel.SmallCartViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@if (Model != null)
+{
+    <p>ნივთები კალათაში: <span class="badge badge-primary">@Model.NumbersOfItem</span></p>
+    <p>მთლიანი ღირებულება: <b>@Model.TotalAmount.ToString("C2")</b></p>
+    <a class="btn btn-primary mb-2" asp-controller="Cart" asp-action="Index">კალათის ნახვა</a>
+    <br />
+    <a class="btn btn-danger" asp-controller="Cart" asp-action="Clear">კალათის გასუფთავება</a>
+}
+else
+{
+    <p class="lead m-0">კალათა ცარიელია.</p>
+}

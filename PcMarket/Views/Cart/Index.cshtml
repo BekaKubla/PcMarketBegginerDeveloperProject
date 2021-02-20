@@ -22,24 +22,27 @@
                 <td>@item.ProductName</td>
                 <td>@item.Quantity</td>
                 <td>
-                    <a  asp-action="add" asp-route-id="@item.ProductId" class="btn btn-sm btn-primary">+</a>
-                    <a  asp-action="decrease" asp-route-id="@item.ProductId" class="btn btn-sm btn-primary">-</a>
-                    <a  asp-action="remove" asp-route-id="@item.ProductId" class="btn btn-sm btn-primary">წაშლა</a>
+                    <a asp-action="add" asp-route-id="@item.ProductId" class="btn btn-sm btn-primary">+</a>
+                    <a asp-action="decrease" asp-route-id="@item.ProductId" class="btn btn-sm btn-primary">-</a>
+                    <a asp-action="remove" asp-route-id="@item.ProductId" class="btn btn-sm btn-primary">წაშლა</a>
 
                 </td>
                 <td>@item.DisplayPrice</td>
-                <td>@Model.CartItems.Where(x=>x.ProductId==item.ProductId).Sum(x=>x.Quantity
-               *x.Price).ToString()₾</td>
-                
-            </tr>
-        }
-        <tr>
-            <td class="text-right" colspan="4">საბოლოო ჯამი : @Model.GrandTotal₾</td>
+                <td>
+                    @Model.CartItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Quantity
+           * x.Price).ToString()₾
+            </td>
+
         </tr>
+    }
+    <tr>
+        <td class="text-right" colspan="4">საბოლოო ჯამი : @Model.GrandTotal₾</td>
+    </tr>
         <tr>
             <td class="text-right" colspan="4">
-                <a asp-action="Clear"class="btn btn-danger">გასუფთავება</a>
-                <a asp-action="#"class="btn btn-primary">შეკვეთა</a>
+                <a asp-action="Clear" class="btn btn-danger">გასუფთავება</a>
+                <a asp-action="#" class="btn btn-primary">შეკვეთა</a>
+                <a href="##"onclick="history.go(-1); return false;"class="btn btn-primary">პროდუქტზე დაბრუნება</a>
             </td>
         </tr>
     </table>
