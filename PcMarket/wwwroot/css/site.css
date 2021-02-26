@@ -116,3 +116,6 @@ form.paypalform{
     position:absolute;
     left:-3000px
 }
+.topnav-right {
+    float: right;
+}

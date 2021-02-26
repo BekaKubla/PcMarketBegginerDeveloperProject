@@ -16,7 +16,7 @@
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse topnav">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="dropdown">
                                 <a class="nav-link" asp-controller="pcpart" asp-action="List">ნაწილები</a>
@@ -39,13 +39,13 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="admin" asp-controller="part" asp-action="index">Admin Panel</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="pcpart" asp-action="Contact">კონტაქტი</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="cart" asp-action="index">კალათა</a>
-                            </li>
                         </ul>
+                    </div>
+                    <div class="topnav-rigth nav-item">
+                        <a asp-controller="cart" asp-action="index">კალათა</a>
+                        <a asp-controller="pcpart" asp-action="Contact">კონტაქტი</a>
+                        <a asp-controller="account" asp-action="Register">რეგისტრაცია</a>
+                        <a asp-controller="account" asp-action="Logint">შესვლა</a>
                     </div>
                 </div>
             </nav>
